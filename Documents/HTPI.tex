@@ -1,0 +1,61 @@
+\documentclass[../setup.tex]{subfiles}
+\graphicspath{{../images}}
+
+\begin{document}
+
+\title{Notes from How to Prove It}
+\author{Julian Dominic}
+\date{28 July 2022}
+\pagenumbering{gobble}
+\maketitle
+\clearpage
+
+% ===== Define a preface environment =====
+\newcommand{\prefacename}{Preface}
+\newenvironment{preface}{
+    {\noindent \bfseries \Huge \prefacename}
+    \begin{center}
+        % \phantomsection \addcontentsline{toc}{chapter}{\prefacename} % enable this if you want to put the preface in the table of contents
+        \thispagestyle{plain}
+    \end{center}%
+}
+
+
+\preface
+I wrote these notes principally FOR understanding, they are meant for future reference for a refresher on what I have learnt. These notes assumes a mathematical maturity of at least an A-Level student because there may be some technical aspects that are deemed too difficult to fully comprehend if the reader is not at the required level. \\
+Honestly, I don't have much to say, I just thought that a preface would be cool. Let's start our journey now.
+
+
+
+\tableofcontents
+\pagenumbering{gobble}
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Sentential Logic}
+\subsection{Deductive reasoning and logical connectives}
+In an \textit{argument}, we arrive at \textit{conclusions} assuming that the \textit{premises} are \textbf{true}. \\ 
+Premises are often referred to as conditions, and conclusions are called the outcome. \\
+If all the premises are \textbf{true}, then the conclusion should be \textbf{true}. However, for the case where the conclusion is \textbf{false} while the premises are \textbf{true}, the argument is \textbf{invalid}.
+
+\begin{tabular}{| c | c | c |}
+\hline
+Symbol & Meaning & Description \\
+\hline
+& & \\
+$\lor$ & or & Disjunction \\
+& & \\
+$\land$ & and & Conjunction \\
+& & \\
+$\not$ & not & Negation \\
+\hline
+\end{tabular}
+
+\subsection{Truth tables}
+\subsection{Variables and sets}
+\subsection{Operations on sets}
+\subsection{The conditional and biconditional connectives}
+
+\end{document}

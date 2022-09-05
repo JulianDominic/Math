@@ -1,0 +1,50 @@
+\documentclass[../setup.tex]{subfiles}
+\graphicspath{{../images}}
+
+\begin{document}
+
+\title{Logic}
+\author{Julian Dominic}
+\date{}
+\maketitle
+
+\noindent\textbf{DeMorgan's Laws} 
+	\[\neg(P \land Q) \text{ is equivalent to } \neg P \lor \neg Q.\]
+	\[\neg(P \lor Q) \text{ is equivalent to } \neg P \land \neg Q.\]
+\textbf{Commutative Laws}
+	\[P \land Q \text{ is equivalent to } Q \land P.\]
+	\[ P \lor Q \text{ is equivalent to } Q \lor P.\]
+\textbf{Associative Laws}
+	\[P \land (Q \land R) \text{ is equivalent to } (P \land Q) \land R.\] 
+	\[P \lor (Q \lor R) \text{ is equivalent to } (P \lor Q) \lor R.\]
+\textbf{Idempotent Laws}
+	\[ P \land P \text { is equivalent to } P.\]
+	\[P \lor P \text{ is equivalent to } P.\]
+\textbf{Distributive Laws}
+	\[ P \land (Q \lor R) \text{ is equivalent to } (P \land Q) \lor (P \land R).\]
+	\[ P \lor (Q \land R) \text{ is equivalent to } (P \lor Q) \land (Q \lor R).\]
+\textbf{Absorption Laws}
+	\[P \lor (P \land Q) \text{ is equivalent to } P.\]
+	\[P \land (P \lor Q) \text{ is equivalent to } P.\]
+\textbf{Double Negation Law}
+	\[\neg\neg P \text{ is equivalent to } P.\]
+\textbf{Tautology Laws}
+	\[ P \land (\text{a tautology}) \text{ is equivalent to } P. \]
+	\[P \lor (\text{a tautology}) \text{ is a tautology}. \]
+	\[ \neg(\text{a tautology}) \text{ is a contradiction}. \]
+\textbf{Contradiction Laws}
+	\[ P \land (\text{a contradiction}) \text{ is a contradiction}. \]
+	\[ P \lor (\text{a contradition}) \text{ is equivalent to } P. \]
+	\[ \neg(\text{a contradiction}) \text{ is a tautology}. \]
+\textbf{Conditional Laws}
+	\[ P \rightarrow Q \text{ is equivalent to } \neg P \lor Q. \]
+	\[ P \rightarrow Q \text{ is equivalent to } \neg(P \land \neg Q). \]
+\textbf{Contrapositive Laws}
+	\[ P \rightarrow Q \text{ is equivalent to } \neg Q \rightarrow \neg P. \]
+\textbf{Biconditional Laws}
+	\[ P \leftrightarrow Q \text{ is equivalent to } (P \rightarrow Q) \land (Q \rightarrow P). \]
+\textbf{Quantifier Negation Laws}
+	\[ \neg\exists xP(x) \text{ is equivalent to } \forall x\neg P(x) \]
+	\[ \neg\forall xP(x) \text{ is equivalent to } \exists x \neg P(x) \] 
+
+\end{document}

@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+
+\title{First Document}
+\author{Julian Liaw}
+
+\begin{document}
+\maketitle
+
+\section*{Definitions of $e$}
+Let's begin with a formula $e^{i\pi} + 1 = 0$. 
+
+\begin{enumerate}
+\item As a \textbf{limit}: 
+
+\begin{equation} 
+\begin{split}
+\label{limit}
+e &= \lim_{n\to\infty} \left(1+ \frac{1}{n}\right)^n \\ &= \lim_{n\to\infty}\frac{n}{\sqrt[n]{n!}} \\ &= \lim_{t \to 0}(1+t)^{\frac{1}{t}} \\
+\end{split}
+\end{equation}
+
+\item As a \textit{sum}:
+
+\[ e = \sum_{n=0}^{\infty} \frac{1}{n!} \]
+
+\begin{multline}
+e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \frac{x^6}{6!} + \frac{x^7}{7!} \\ + \frac{x^8}{8!} + \frac{x^9}{9!} + \frac{x^{10}}{10!} + \frac{x^{11}}{11!} + \frac{x^{12}}{12!} + \frac{x^{13}}{13!} + \dots
+\end{multline}
+
+\item As a \underline{continued fraction}:
+
+\[ e = 2 + \frac{1}{1+\frac{1}{2+\frac{2}{3+\frac{3}{4+\frac{4}{5+\ddots}}}}} \]
+\end{enumerate}
+
+Equation \ref{limit} was really cool
+
+\newpage
+\section*{More Tricks}
+
+\begin{table}
+\caption{A nifty table!}
+\label{niftytable}
+\begin{center}
+\begin{tabular}{| c | r |}
+	\hline
+	1 & 2 \\ \hline
+	3 & 40000000000000000000000000000 \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+I like table \ref{niftytable}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{length}
+	\caption{I did it!}
+	\label{fig:length}
+\end{figure}
+
+I am so proud of figure \ref{fig:length}
+
+\begin{example} You should like and subscribe!
+\end{example}
+
+\end{document}
