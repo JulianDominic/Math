@@ -4,3 +4,7 @@
 *.gz
 *.idx
 *.toc
+*.txt
+*gitignore
+*.sty
+setup.tex
