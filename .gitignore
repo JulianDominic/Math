@@ -5,6 +5,6 @@
 *.idx
 *.toc
 *.txt
-*gitignore
+*.gitignore
 *.sty
 setup.tex
