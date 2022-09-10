@@ -34,27 +34,73 @@ Honestly, I don't have much to say, I just thought that a preface would be cool.
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
+
+
 \section{Sentential Logic}
 \subsection{Deductive reasoning and logical connectives}
-In an \textit{argument}, we arrive at \textit{conclusions} assuming that the \textit{premises} are \textbf{true}. \\ 
-Premises are often referred to as conditions, and conclusions are called the outcome. \\
+In an \textit{argument}, we arrive at \textbf{valid} \textit{conclusions} assuming that the \textit{premises} are \textbf{true}. \\ 
+Premises and conclusiosn are often referred to as conditions and outcomes respectively. \\
 If all the premises are \textbf{true}, then the conclusion should be \textbf{true}. However, for the case where the conclusion is \textbf{false} while the premises are \textbf{true}, the argument is \textbf{invalid}.
 
+\subsubsection{Logical Operators}
+{
+\centering
 \begin{tabular}{| c | c | c |}
 \hline
 Symbol & Meaning & Description \\
 \hline
 & & \\
-$\lor$ & or & Disjunction \\
+$\lor$ & OR & Disjunction \\
 & & \\
-$\land$ & and & Conjunction \\
+$\land$ & AND & Conjunction \\
 & & \\
-$\lnot$ & not & Negation \\
+$\lnot$ & NOT & Negation \\
 \hline
-\end{tabular}
+\end{tabular} \\
+}
+
+
 
 \subsection{Truth tables}
+A truth table must be able to represent all possible combinations of the variables, premises and conclusions.\\
+\\
+{
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$P$&$Q$&$P\land Q$ \\
+\hline
+F&F&F \\
+F&T&F \\
+T&F&F \\
+T&T&T \\
+\hline
+\end{tabular} \\
+} 
+
+\paragraph{} In this case, we see that our variables (or statements), $P$ and $Q$ have their individual column to assign a value -- \textbf{True} or \textbf{False} -- to them. \\
+We use our logical operators to make a new statement from $P$ and $Q$ which is $P\land Q$, and assign a value to the new statement. \\
+\\
+It is important note that the number of variables will dictate the number of rows that the truth table will have. Construct a truth table for the following set of variables, $\{P\}$, $\{P, Q\}$, $\{P, Q, R\}$. \\
+The pattern that we find is that as the number of variables increases, the number of rows increases two-fold. \\
+\[ \text{Number of Rows} = 2^{\text{Number of Variables}} \]
+\\
+There are some special truth tables where the column for the conclusion always has the same value (either all \textit{true} or all \textit{false}) for every combination of the variables' values. \\
+\\
+When the conclusion is always \textit{true}, we say that the conclusion's statement is a \textbf{tautologies}. Construct a truth table for $P\lor\lnot P$.\\
+Similarly, when the conclusion is always \textit{false}, we say that the conclusion's statement is a \textbf{contradiction}. Construct a truth table for $P \land\lnot P$. \\
+
+\begin{remark}
+\textit{Tautologies} and \textit{Contradictions} are not the only laws that govern logic. Do see the logic document for more.
+\end{remark}
+
+
+
 \subsection{Variables and sets}
+
+
+
+
 \subsection{Operations on sets}
 \subsection{The conditional and biconditional connectives}
 
