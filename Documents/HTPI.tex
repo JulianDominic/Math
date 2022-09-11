@@ -97,10 +97,42 @@ Similarly, when the conclusion is always \textit{false}, we say that the conclus
 
 
 \subsection{Variables and sets}
+\subsubsection{Sets}
+A set is a collection of elements. The order of the elements in the set does not matter. If an element appears more than once, it is still the same set. \\
+\[ \{3, 7, 14\} \equiv \{7, 3, 14\} \equiv \{14, 3, 7, 7\} \]
+\\
+When the set is infinite or has too many elemnts to list, we will define it explicitly. Suppose we have the following set $P$. \\
+
+\[ P = \{x \ |\  x \text{ is a prime number}\} \]
+\\
+How we read $P = \{x | x \text{is a prime number}\}$ is ``$P$ is equal to the set of all $x$ such that $x$ is a prime number.'' Which also means that $P$ contains all values of $x$ that make the statement ``$x$ is a prime number'' true. \\
+Some direct translations of the symbols into words would be (i) ``\{\}'' means ``the set of'', and (ii) ``$|$'' means ``such that''. \\
+\\
+Sets like $P$ have an \textbf{elementhood test} for the set; in this case, the \textit{elementhood test} is being a prime number. Any value of $x$ that makes the statement come out true, passes the test and is an element of the set. \\
+The \textbf{Truth set} of a statement $P(x)$ is the set of all values of $x$ that make the statement $P(x)$ true. In other words, it is the set defined by using the statement $P(x)$ as the elementhood test: \\
+\[ \text{Truth set of } P(x) = \{x \ | \ P(x)\} \]
+
+\subsubsection{Understanding variables used in sets}
+There are two types of variables that can appear in a set; \textbf{Free variables} and \textbf{Bound variables}. \textit{Free variables} are variables that will make the statement either \textit{True} or \textit{False} while \textit{Bound variables} are variables whose values we do not need to know (they can be considered \textit{dummy variables}). Lets consider the following example, \\
+\\
+ \[ y \in \{x \ | \ x^2 < 9\} \] 
+\\
+For any number $y$, to verify $y \in \{x \ | \ x^2 < 9\}$, we have to check $y^2 < 9$. Since $y \in \{x \ | \ x^2 < 9\}$ is just a roundabout way of saying $y^2 < 9$, it follows that we do not need to care about the value of $x$. Rather, only the value of $y$ is required. Thus, we can say that $y$ is a \textit{free variable} while $x$ is a \textit{bound variable}. As such, we can go further and replace $x$ with any other variable except $y$ because we do not need to care what $x$ is. As such, it can even be $y \in \{w\ | \ w^2 < 9\}$ where $y$ is \textit{free} and $w$ is \textit{bound}. Notice that $x^2 < 9$ makes $x$ a \text{free variable}. We can say that that statement $P(x)$ in $\{x \ | \ P(x)\}$ \textbf{binds} the variable $x$. \\
 
 
+\begin{remark}
+In general, the statement $y \in \{x\ |\ P(x)\} \Rightarrow P(y)$ and $y \notin \{x\ |\ P(x)\} \Rightarrow \lnot P(y)$. \\
+It is also important to note that ${x\ |\ P(x)}$ is not a statement. It is a set because of the curly brackets ``\{\}''
+\end{remark}
+\clearpage
 
+The \textbf{Universe of Discourse}, $U$, is the set of all possible values for the variables. We can say things such as $\{x \in U\ |\ P(x)\}$: The set of all $x$ in $U$ such that $P(x)$. For a set that has the \textit{universe of discourse} defined, an element of the set has to pass two tests, $x \in U$ and $P(x)$. Therefore, in general, $y \in \{x\in A\ |\ P(x)\} \Rightarrow y\in A \land P(y)$. \\
+If $P(x)$ is false for every possible value of $x$, it yields a truth set with no elements. As such, we get the \textbf{empty set}/\textbf{null set}; $\emptyset$ or $\{\}$ where the contents inside the curly brackets are blank. For example, \\
+\[\{x\in\mathbb{Z} \ |\ x \neq x\} = \emptyset = \{\}\]
 
+\begin{remark}
+$\emptyset \neq \{\emptyset\}$. $\emptyset$ is a set while $\{\emptyset\}$ is a set of a set.
+\end{remark}
 \subsection{Operations on sets}
 \subsection{The conditional and biconditional connectives}
 
