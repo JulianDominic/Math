@@ -39,7 +39,7 @@ Honestly, I don't have much to say, I just thought that a preface would be cool.
 \section{Sentential Logic}
 \subsection{Deductive reasoning and logical connectives}
 In an \textit{argument}, we arrive at \textbf{valid} \textit{conclusions} assuming that the \textit{premises} are \textbf{true}. \\ 
-Premises and conclusiosn are often referred to as conditions and outcomes respectively. \\
+Premises and conclusion are often referred to as conditions and outcomes respectively. \\
 If all the premises are \textbf{true}, then the conclusion should be \textbf{true}. However, for the case where the conclusion is \textbf{false} while the premises are \textbf{true}, the argument is \textbf{invalid}.
 
 \subsubsection{Logical Operators}
@@ -55,6 +55,7 @@ $\lor$ & OR & Disjunction \\
 $\land$ & AND & Conjunction \\
 & & \\
 $\lnot$ & NOT & Negation \\
+& & \\
 \hline
 \end{tabular} \\
 }
@@ -64,22 +65,53 @@ $\lnot$ & NOT & Negation \\
 \subsection{Truth tables}
 A truth table must be able to represent all possible combinations of the variables, premises and conclusions.\\
 \\
+
 {
 \centering
-\begin{tabular}{|c|c|c|}
-\hline
-$P$&$Q$&$P\land Q$ \\
-\hline
-F&F&F \\
-F&T&F \\
-T&F&F \\
-T&T&T \\
-\hline
-\end{tabular} \\
-} 
+% I couldn't get the three tables to be side-by-side so here comes manual spaces
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\begin{minipage}[t]{0.32\textwidth}
+	\begin{tabular}[t]{|c|c|c|}
+		\hline
+		$P$&$Q$&$P\lor Q$ \\
+		\hline
+		F&F&F \\
+		F&T&T \\
+		T&F&T \\
+		T&T&T \\
+		\hline
+	\end{tabular}
 
-\paragraph{} In this case, we see that our variables (or statements), $P$ and $Q$ have their individual column to assign a value -- \textbf{True} or \textbf{False} -- to them. \\
-We use our logical operators to make a new statement from $P$ and $Q$ which is $P\land Q$, and assign a value to the new statement. \\
+\end{minipage}
+\quad
+\begin{minipage}[t]{0.32\textwidth}
+	\begin{tabular}[t]{|c|c|c|}
+		\hline
+		$P$&$Q$&$P\land Q$ \\
+		\hline
+		F&F&F \\
+		F&T&F \\
+		T&F&F \\
+		T&T&T \\
+		\hline
+	\end{tabular} 
+\end{minipage}
+\quad
+\begin{minipage}[t]{0.32\textwidth}
+	\begin{tabular}[t]{|c|c|}
+		\hline
+		$P$&$\lnot P$ \\
+		\hline
+		F&T \\
+		T&F \\
+		\hline
+	\end{tabular}
+\end{minipage}
+}
+\\ 
+\\
+In this case, we see that our variables (or statements), $P$ and $Q$ have their individual column to assign a value -- \textbf{True} or \textbf{False} -- to them. \\
+We use our logical operators to make a new statement from $P$ and $Q$ which can be $P\land Q$, and assign a value to the new statement. \\
 \\
 It is important note that the number of variables will dictate the number of rows that the truth table will have. Construct a truth table for the following set of variables, $\{P\}$, $\{P, Q\}$, $\{P, Q, R\}$. \\
 The pattern that we find is that as the number of variables increases, the number of rows increases two-fold. \\
@@ -109,31 +141,111 @@ How we read $P = \{x | x \text{is a prime number}\}$ is ``$P$ is equal to the se
 Some direct translations of the symbols into words would be (i) ``\{\}'' means ``the set of'', and (ii) ``$|$'' means ``such that''. \\
 \\
 Sets like $P$ have an \textbf{elementhood test} for the set; in this case, the \textit{elementhood test} is being a prime number. Any value of $x$ that makes the statement come out true, passes the test and is an element of the set. \\
+\begin{theorem}[Truth Set]
 The \textbf{Truth set} of a statement $P(x)$ is the set of all values of $x$ that make the statement $P(x)$ true. In other words, it is the set defined by using the statement $P(x)$ as the elementhood test: \\
 \[ \text{Truth set of } P(x) = \{x \ | \ P(x)\} \]
+\end{theorem}
 
 \subsubsection{Understanding variables used in sets}
 There are two types of variables that can appear in a set; \textbf{Free variables} and \textbf{Bound variables}. \textit{Free variables} are variables that will make the statement either \textit{True} or \textit{False} while \textit{Bound variables} are variables whose values we do not need to know (they can be considered \textit{dummy variables}). Lets consider the following example, \\
 \\
  \[ y \in \{x \ | \ x^2 < 9\} \] 
 \\
-For any number $y$, to verify $y \in \{x \ | \ x^2 < 9\}$, we have to check $y^2 < 9$. Since $y \in \{x \ | \ x^2 < 9\}$ is just a roundabout way of saying $y^2 < 9$, it follows that we do not need to care about the value of $x$. Rather, only the value of $y$ is required. Thus, we can say that $y$ is a \textit{free variable} while $x$ is a \textit{bound variable}. As such, we can go further and replace $x$ with any other variable except $y$ because we do not need to care what $x$ is. As such, it can even be $y \in \{w\ | \ w^2 < 9\}$ where $y$ is \textit{free} and $w$ is \textit{bound}. Notice that $x^2 < 9$ makes $x$ a \text{free variable}. We can say that that statement $P(x)$ in $\{x \ | \ P(x)\}$ \textbf{binds} the variable $x$. \\
+For any number $y$, to verify $y \in \{x \ | \ x^2 < 9\}$, we have to check $y^2 < 9$. Since $y \in \{x \ | \ x^2 < 9\}$ is just a roundabout way of saying $y^2 < 9$, it follows that we do not need to care about the value of $x$. Rather, only the value of $y$ is required. Thus, we can say that $y$ is a \textit{free variable} while $x$ is a \textit{bound variable}. As such, we can go further and replace $x$ with any other variable except $y$ because we do not need to care what $x$ is. As such, it can even be $y \in \{w\ | \ w^2 < 9\}$ where $y$ is \textit{free} and $w$ is \textit{bound}. Notice that $x^2 < 9$ makes $x$ a \textit{free variable}. We can say that that statement $P(x)$ in $\{x \ | \ P(x)\}$ \textbf{binds} the variable $x$. 
 
 
 \begin{remark}
 In general, the statement $y \in \{x\ |\ P(x)\} \Rightarrow P(y)$ and $y \notin \{x\ |\ P(x)\} \Rightarrow \lnot P(y)$. \\
 It is also important to note that ${x\ |\ P(x)}$ is not a statement. It is a set because of the curly brackets ``\{\}''
 \end{remark}
-\clearpage
 
+\begin{theorem}[Universe of Discourse]
 The \textbf{Universe of Discourse}, $U$, is the set of all possible values for the variables. We can say things such as $\{x \in U\ |\ P(x)\}$: The set of all $x$ in $U$ such that $P(x)$. For a set that has the \textit{universe of discourse} defined, an element of the set has to pass two tests, $x \in U$ and $P(x)$. Therefore, in general, $y \in \{x\in A\ |\ P(x)\} \Rightarrow y\in A \land P(y)$. \\
 If $P(x)$ is false for every possible value of $x$, it yields a truth set with no elements. As such, we get the \textbf{empty set}/\textbf{null set}; $\emptyset$ or $\{\}$ where the contents inside the curly brackets are blank. For example, \\
 \[\{x\in\mathbb{Z} \ |\ x \neq x\} = \emptyset = \{\}\]
+\end{theorem}
 
 \begin{remark}
 $\emptyset \neq \{\emptyset\}$. $\emptyset$ is a set while $\{\emptyset\}$ is a set of a set.
 \end{remark}
-\subsection{Operations on sets}
+
+
+
+\subsection{Operations on two sets}
+\begin{theorem}[Intersection of sets]
+The \textbf{Intersection} of sets -- as the name suggests -- will yield the set that contains elements that exists in both of the sets. Simply, it contains elements that the sets have in common.
+\[A\cap B = \{x\ |\ x\in A\ \text{and } x\in B \}\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Venn Diagram-Intersection.png}
+    \caption{Source from Wikipedia}
+\end{figure}
+\end{theorem}
+
+\begin{theorem}[Disjoint]
+$A$ and $B$ are \textbf{disjoint} if they have no elements in common; the \textbf{intersection} of the sets $A$ and $B$ does not exist -- the set is empty. This is also known as \textbf{mutually exclusive}. Therefore, we can say that $A$ and $B$ are \textit{mutually exclusive}.
+\[A\cap B = \emptyset\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Venn Diagram-Disjoint.png}
+    \caption{Source from Wikipedia}
+\end{figure}
+\end{theorem}
+
+
+\begin{theorem}[Union of two sets]
+The \textbf{Union} of sets will yield the set that contains elements that come from any and all of the sets. Essentially, it is the amalgamation of all the elements from every set. It is important to note that in Mathematics, the word \textbf{or} is used `inclusively'; Consider the example below, we want to get elements that are in either $A$ or $B$ or both. While in conversation, we may think of \textbf{or} as an exclusive term such as when making a decision between two choices.
+\[A\cup B = \{x\ |\ x\in A\ \text{or } x\in B \}\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Venn Diagram-Union.png}
+    \caption{Source from Wikipedia}
+\end{figure}
+\end{theorem}
+
+
+
+\begin{theorem}[Difference of two sets]
+The \textbf{Difference} of sets will yield the set that contains elements that are \textit{exclusive} to set $A$. \text{Exclusive} is being used in its literal meaning here; we do not include an element that can be found in more than one set, the element has to be unique.   
+\[A\setminus B = \{x\ |\ x\in A\ \text{and } x\notin B \}\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Venn Diagram-Difference.png}
+    \caption{Source from Wikipedia}
+\end{figure}
+\end{theorem}
+
+
+\begin{theorem}[Symmetric Difference of two sets]
+The \textbf{Symmetric Difference} of sets will yield the set that contains elements that are in either $A$ or $B$ but not both. To put it plainly, it is the set that contains elements that are exclusive to both $A$ and $B$. You can think of it as the \textbf{union} of $A$ and $B$ without their \textbf{intersection}.
+\[A \triangle B = (A\setminus B) \cup (B\setminus A)\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Venn Diagram-SymmetricDifference.png}
+    \caption{Source from Wikipedia}
+\end{figure}
+\end{theorem}
+
+\begin{theorem}[Subset]
+$A$ is a \textbf{subset} of $B$ if every element of $A$ is also an element of $B$. It is really just saying that $B$ is the `bigger brother' that contains $A$ . There are also \textbf{proper subsets} where $A$ is a subset of $B$ but not equal to $B$ ($A$ cannot have every single element that $B$ has).
+\begin{align*}
+A &\subseteq B \text{\ \ \ \ (Subset)} \\
+A &\subset B \text{\ \ \ \ (Proper Subset)}
+\end{align*}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Venn Diagram-ProperSubset.png}
+    \caption{Source from Wikipedia}
+\end{figure}
+\end{theorem}
+
 \subsection{The conditional and biconditional connectives}
+\begin{theorem}[Conditional Statement]
+\end{theorem}
+Converse \\
+Contrapositive 
+
+\begin{theorem}[Biconditional Statement]
+\end{theorem}
 
 \end{document}
