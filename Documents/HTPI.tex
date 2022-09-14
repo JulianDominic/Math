@@ -68,7 +68,7 @@ A truth table must be able to represent all possible combinations of the variabl
 
 {
 \centering
-% I couldn't get the three tables to be side-by-side so here comes manual spaces
+% I couldn't get the three tables to be side-by-side and centered properly so here comes minipages and manual spaces
 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
 \begin{minipage}[t]{0.32\textwidth}
 	\begin{tabular}[t]{|c|c|c|}
@@ -81,7 +81,6 @@ A truth table must be able to represent all possible combinations of the variabl
 		T&T&T \\
 		\hline
 	\end{tabular}
-
 \end{minipage}
 \quad
 \begin{minipage}[t]{0.32\textwidth}
@@ -240,8 +239,37 @@ A &\subset B \text{\ \ \ \ (Proper Subset)}
 \end{theorem}
 
 \subsection{The conditional and biconditional connectives}
+\subsubsection{Conditional Statement}
 \begin{theorem}[Conditional Statement]
+ \textbf{Conditional} statements introduces a new logical connective, $\rightarrow$. With reference to the expression below, $P\rightarrow Q$ is read as `\textbf{If} $P$ \textbf{then} $Q$'. $P$ and $Q$ are known as the \textit{antecedent} and \textit{consequent} respectively.
+\[P\rightarrow Q\ = \lnot P \lor Q \]
 \end{theorem}
+
+
+
+\begin{center}
+	\begin{tabular}[t]{| c | c | c |}
+		\hline
+		$P$ & $Q$ & $P\rightarrow Q$ \\
+		\hline
+		F & F & T \\
+		F & T & T \\
+		T & F & F \\ 
+		T & T & T \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+While using the equivalent formula $P\rightarrow Q\ =\ \lnot P \lor Q$ is easier to calculate the values for the truth table, lets find the motivation to fill it in just by thinking about \textbf{if} and \textbf{then}. \\
+\\
+The last row is painfully obvious. \textbf{If} $P$ is \textit{true} \textbf{then} $Q$ is clearly \textit{true}. \\
+The third row is a little tricky but quite straightforward. There is no possible case for $P$ to be \textit{true} and $Q$ to be \textit{false} because \textbf{if} $P$ is \textit{true} \textbf{then} $Q$ \textit{must} be \textit{true}. Therefore, the statement is \textit{false}. \\
+For the remaining rows, lets use an example to justify our answers. Let $P$ stand for the statement that $x > 2$, and $Q$ stand for the statement that $x^2 > 4$. For the first row, consider $x = 1$, it follows that $x^2 = 1 < 4$. I did not mention anything about an $x$-value that is less than or equal to 2; As such, it does not invalidate my claim that `\textbf{If} $x > 2$ \textbf{then} $x^2 > 4$'. Therefore, the statement is \textit{true}. Finally, for the second row, consider $x = -5$, it follows that $x^2 = 25 > 4$. Note, in a similar fashion for my justification for the first row, I still have not said anything that would invalidate my statement that earlier. Thus, the statement is \textit{true}. 
+
+\begin{remark}
+One may question why not we just claim that $P\rightarrow Q$ is false for the first two rows? In our reasoning, we just said that our variables did not invalidate our statement so the `truth'-value of our statement is actually unknown. \\ To quote: ``We accept a basic axiom of logic that tell us that every statement is either true or false, so we have to pick one. In mathematics, we find it more useful to take it to be true, but this is not necessary.'' 
+\end{remark}
+\phantom \\ \\
 Converse \\
 Contrapositive 
 
