@@ -22,7 +22,8 @@
 
 
 \preface
-I wrote these notes principally FOR understanding, they are meant for future reference for a refresher on what I have learnt. \\
+I wrote these notes principally FOR understanding, they are meant for future reference for a refresher on what I have learnt. As such, certain definitions may not be exactly precise but are rephrased into simpler terms. \\
+I am using the first edition of the book. ISBN 0-521-44663-5 \\
 Honestly, I don't have much to say, I just thought that a preface would be cool. Let's start our journey now.
 
 
@@ -241,7 +242,7 @@ A &\subset B \text{\ \ \ \ (Proper Subset)}
 \subsection{The conditional and biconditional connectives}
 \subsubsection{Conditional Statement}
 \begin{theorem}[Conditional Statement]
- \textbf{Conditional} statements introduces a new logical connective, $\rightarrow$. With reference to the expression below, $P\rightarrow Q$ is read as `\textbf{If} $P$ \textbf{then} $Q$'. $P$ and $Q$ are known as the \textit{antecedent} and \textit{consequent} respectively.
+ \textbf{Conditional statements} introduces a new logical connective, $\rightarrow$. With reference to the expression below, $P\rightarrow Q$ is read as `\textbf{If} $P$ \textbf{then} $Q$'. $P$ and $Q$ are known as the \textit{antecedent} and \textit{consequent} respectively.
 \[P\rightarrow Q\ = \lnot P \lor Q \]
 \end{theorem}
 
@@ -267,13 +268,47 @@ The third row is a little tricky but quite straightforward. There is no possible
 For the remaining rows, lets use an example to justify our answers. Let $P$ stand for the statement that $x > 2$, and $Q$ stand for the statement that $x^2 > 4$. For the first row, consider $x = 1$, it follows that $x^2 = 1 < 4$. I did not mention anything about an $x$-value that is less than or equal to 2; As such, it does not invalidate my claim that `\textbf{If} $x > 2$ \textbf{then} $x^2 > 4$'. Therefore, the statement is \textit{true}. Finally, for the second row, consider $x = -5$, it follows that $x^2 = 25 > 4$. Note, in a similar fashion for my justification for the first row, I still have not said anything that would invalidate my statement that earlier. Thus, the statement is \textit{true}. 
 
 \begin{remark}
-One may question why not we just claim that $P\rightarrow Q$ is false for the first two rows? In our reasoning, we just said that our variables did not invalidate our statement so the `truth'-value of our statement is actually unknown. \\ To quote: ``We accept a basic axiom of logic that tell us that every statement is either true or false, so we have to pick one. In mathematics, we find it more useful to take it to be true, but this is not necessary.'' 
+One may question why not we just claim that $P\rightarrow Q$ is false for the first two rows? In our reasoning, we just said that our variables did not invalidate our statement so the `truth'-value of our statement is actually unknown. \\ To quote: ``We accept a basic axiom of logic that tell us that every statement is either true or false, so we have to pick one. In mathematics, we find it more useful to take it to be true, but this is not necessary (for all).'' 
 \end{remark}
 \phantom \\ \\
-Converse \\
-Contrapositive 
+The \textbf{Converse} of any \textit{conditional statement} is going in the opposite direction of its particular \textit{conditional statement}. The thought process of considering the \textbf{converse} is \textit{if} $P$ \textit{then} $Q$, but \textit{if} $Q$ \textit{then} $P \equiv \boldsymbol{Q \rightarrow P}$?\\
+\\
+The \textbf{Contrapositive} of any \textit{conditional statement} is going in the opposite direction of its particular \textit{conditional statement} \textbf{and} \textit{negating} the variables. More often than not, it is often confused with the \textit{converse}. This is because people often confuse the thought process of considering the \textbf{contrapositive} which would be seeing that $P \rightarrow Q \equiv \lnot P\lor Q \equiv Q \lor\lnot P \equiv \boldsymbol{\lnot Q \rightarrow \lnot P}$. 
 
 \begin{theorem}[Biconditional Statement]
+$P \rightarrow Q$ and $Q \rightarrow P$ are not equivalent but more often than not, we want to say that both are true. This where \textbf{Biconditional statements} come in. We want to fufill two conditions at once (which is why it is called \textbf{biconditional}). \\
+With reference to the example below, $P \longleftrightarrow Q$ can be read as mainly read as `$P$ \textbf{if and only if} $Q$' (some replace \textit{if and only if} by \textit{iff} for simplicity). It is read this way because of the way the \textbf{conditional} statements are formed which is  $Q \rightarrow P$ is read as `$P$ if $Q$' and $P \rightarrow Q$ is read as `$P$ only if $Q$'.
+% \longleftrightarrow -- \leftrightarrow both work. I prefer the former.
+\[ \boldsymbol{P \longleftrightarrow Q} \equiv (P \rightarrow Q) \land (Q \rightarrow P) \equiv (P \rightarrow Q) \land (\lnot P \rightarrow \lnot Q)\]
 \end{theorem}
 
+\begin{remark}
+There are several other ways to which the \textbf{conditional} and \textbf{biconditional} statements can be read. \\
+$P \rightarrow Q$:
+\begin{itemize}
+	\item If $P$ then $Q$.
+	\item $P$ implies $Q$.
+	\item $Q$, if $P$.
+	\item $P$ only if $Q$.
+	\item $P$ is a sufficient condition for $Q$.
+	\item $Q$ is a necessary condition for $P$.
+\end{itemize} 
+$P \longleftrightarrow Q$:
+\begin{itemize}
+	\item $P$ if and only if $Q$ or $P$ iff $Q$.
+	\item $P$ is a necessary and sufficient condition for $Q$.
+\end{itemize}
+\end{remark}
+
+
+
+\section{Quantificational Logic}
+\subsection{Quantifiers}
+\subsection{Equivalences involving quantifiers}
+\subsection{More operations on sets}
+
+\section{Proofs}
+\subsection{Proof strategies}
+\subsection{Proofs involving negations and conditionals}
+\subsection{Proofs involving quantifiers}
 \end{document}
