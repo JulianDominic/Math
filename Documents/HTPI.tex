@@ -273,7 +273,7 @@ One may question why not we just claim that $P\rightarrow Q$ is false for the fi
 \phantom \\ \\
 The \textbf{Converse} of any \textit{conditional statement} is going in the opposite direction of its particular \textit{conditional statement}. The thought process of considering the \textbf{converse} is \textit{if} $P$ \textit{then} $Q$, but \textit{if} $Q$ \textit{then} $P \equiv \boldsymbol{Q \rightarrow P}$?\\
 \\
-The \textbf{Contrapositive} of any \textit{conditional statement} is going in the opposite direction of its particular \textit{conditional statement} \textbf{and} \textit{negating} the variables. More often than not, it is often confused with the \textit{converse}. This is because people often confuse the thought process of considering the \textbf{contrapositive} which would be seeing that $P \rightarrow Q \equiv \lnot P\lor Q \equiv Q \lor\lnot P \equiv \boldsymbol{\lnot Q \rightarrow \lnot P}$. 
+The \textbf{Contrapositive} of any \textit{conditional statement} is going in the opposite direction of its particular \textit{conditional statement} \textbf{and} \textit{negating} the variables. More often than not, it is often confused with the \textit{converse}. This is because people often confuse the thought process of considering the \textbf{contrapositive} which would be seeing that $P \rightarrow Q \equiv \lnot P\lor Q \equiv Q \lor\lnot P \equiv \boldsymbol{\lnot Q \rightarrow \lnot P}$. One way to think about it is to break `\textbf{contrapositive}' into `\textit{contra}' and `\textit{positive}', as such, there should be no positive terms. Hence, there are negations on the variables.
 
 \begin{theorem}[Biconditional Statement]
 $P \rightarrow Q$ and $Q \rightarrow P$ are not equivalent but more often than not, we want to say that both are true. This where \textbf{Biconditional statements} come in. We want to fufill two conditions at once (which is why it is called \textbf{biconditional}). \\
@@ -304,8 +304,68 @@ $P \longleftrightarrow Q$:
 
 \section{Quantificational Logic}
 \subsection{Quantifiers}
+\begin{theorem}[Universal Quantifier]
+To say that $P(x)$ is \textbf{true} for \textbf{every} value of $x$ in the universe of discourse $U$, $P(x)$ is universally \textbf{true}.
+\[\forall xP(x): \text{For all } x, P(x).\]
+\end{theorem}
+
+\begin{theorem}[Existential Quantifier]
+To say that $P(x)$ is \textbf{true} for \textbf{at least one} value of $x$ in the universe of discourse $U$.
+\[\exists xP(x): \text{There exists an $x$ such that $P(x)$}\] 
+
+To say that there is exactly one value of $x$ in the universe of discourse $U$, such that $P(x)$.
+\[\exists !xP(x) \equiv \exists x\left[P(x)\land \lnot\exists y\left(P(y)\land y\neq x\right)\right]\]
+\end{theorem}
+
+
 \subsection{Equivalences involving quantifiers}
+\begin{itemize}
+	\item $\lnot\forall xP(x) \equiv \exists x\lnot P(x)$
+	\item $\lnot\exists xP(x) \equiv \forall x\lnot P(x)$
+	\item $\{x\in U \mid P(x)\} \equiv \{x \mid P(x)\}$
+	\item $\exists x \in A \ P(x) \equiv \exists x \left(x\in A \land P(x)\right)$
+	\item $\forall x \in A \ P(x) \equiv \forall x \left(x\in A \rightarrow P(x)\right)$
+	\item $A\subseteq B \equiv \forall x(x\in A \rightarrow B) \equiv \forall x\in A (x\in B)$
+	\item $\forall x\left(P(x) \land Q(x)\right) \equiv \forall xP(x) \land \forall xQ(x)$
+	\item $\forall x\left(P(x) \lor Q(x)\right) \not\equiv \forall xP(x) \lor \forall xQ(x)$
+	\item $\exists x\left(P(x) \land Q(x)\right) \not\equiv \exists xP(x) \land \exists xQ(x)$
+	\item $\exists x\left(P(x) \lor Q(x)\right) \equiv \exists xP(x) \lor \exists xQ(x)$
+\end{itemize}
+\phantom \\
+Consider the statement, ``Nobody is perfect'', and express it in a logical form. It is often incorrectly written as $\lnot\forall xP(x)$ where $x$ is a person, and $P(x)$ is the statement that $x$ is perfect. $\lnot\forall xP(x)$ is saying that `Not everybody is perfect.' which implies that there is at least one person that is not perfect (see the first item in the list above). When we see $\lnot\forall x$, we immediately think of the complement of everyone which is none. However, that is wrong; `Not' everyone is actually `someone'. Therefore, the answer should be $\forall x\lnot P(x)$ or $\lnot\exists xP(x)$ where they mean `Everyone is not perfect' and `There is not a single person who is perfect' respectively. \\
+
+\clearpage
+\phantom \\ \\
+Consider the following, if $A = \emptyset = \{\}$, $\forall x \in A \ P(x)$ is vacuously true (there isn't a value of $x$ for which $x \in A$ is true) and $\lnot\forall x \in A \ P(x)$ is false. \\
+\begin{align*}
+\lnot\forall x \in A \ P(x) &\equiv \lnot\forall x(x\in A \rightarrow P(x)) \\
+&\equiv \lnot\forall x(x \notin A \lor P(x)) \\ 
+&\equiv \exists x(x \in A \land \lnot P(x)) \\
+&\equiv \exists x\in A \ \lnot P(x)
+\end{align*}
+$\exists x\in A \ \lnot P(x)$ says that `There exists at least one value of $x$ st. $\lnot P(x)$'. However, since  $A = \emptyset = \{\}$, there is no such value of $x$ and therefore, the statement is false.
+
+
+\begin{remark}
+Changing the order of the quantifiers do not matter if they are the same type.
+\begin{itemize}
+	\item $\forall x\forall y \equiv \forall y\forall x$
+	\item $\exists x\exists y \equiv \exists y\exists x$
+\end{itemize}
+It is also important to note that $\forall x \in A$ and $\exists x \in A$ are bounded quantifiers. Consider $\forall x \in U \ (x\geq 0)$ where $U$ can be $\mathbb{R}$ or $\mathbb{N}$.
+\end{remark}
+
+
 \subsection{More operations on sets}
+Consider the following, 
+\begin{itemize}
+	\item $S = \{x \mid \exists n \in \mathbb{N} \ (x = n^2)\} = \{n^2 \mid n \in \mathbb{N}\}$
+	\item $x \in \{n^2 \mid n \in \mathbb{N}\} \ equiv \exists n \in \mathbb{N} \ (x = n^2)$
+\end{itemize}
+Suppose $P = \{p_1, p_2, p_3, \dots, p_100\}$, and we can represent the elements as $p_i$ where $i \in I$. $I = \{1, 2, 3, \dots, 100\} = \{i \in \mathbb{N} \mid 1 \leq i \leq 100\}$. Therefore, $P = \{p_i \mid i \in I\}$ \\
+$I$ is called the \textbf{index set} because $i$ is the \textbf{index}, and $\{p_i \mid i \in I\}$ is called an \textbf{indexed family}. \\
+\\
+In general, Indexed Family: $A = \{x_i \mid i \in I\} = \{x \mid \exists i \in I \ (x = x_i)\} \Rightarrow x \in \{x_i \mid i \in I\} \equiv \exists i \in I \ (x = x_i)$ 
 
 \section{Proofs}
 \subsection{Proof strategies}
