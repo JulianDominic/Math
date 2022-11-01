@@ -10,6 +10,7 @@
 \maketitle
 \clearpage
 
+
 % ===== Define a preface environment =====
 \newcommand{\prefacename}{Preface}
 \newenvironment{preface}{
@@ -19,6 +20,7 @@
         \thispagestyle{plain}
     \end{center}%
 }
+
 
 
 \preface
@@ -367,8 +369,142 @@ $I$ is called the \textbf{index set} because $i$ is the \textbf{index}, and $\{p
 \\
 In general, Indexed Family: $A = \{x_i \mid i \in I\} = \{x \mid \exists i \in I \ (x = x_i)\} \Rightarrow x \in \{x_i \mid i \in I\} \equiv \exists i \in I \ (x = x_i)$ 
 
+\begin{example}[How to Prove It 2.3.1]
+\phantom \\
+\begin{enumerate}
+	\item $y \in \{\sqrt[3]{x} \mid x \in \mathbb{Q}\} \equiv \exists x \in \mathbb{Q} \ (y=\sqrt[3]{x})$
+	\item $\{x_i \mid i \in I\} \subseteq A \Rightarrow x \in \{x_i \mid i \in I\} \subseteq A \equiv \forall x\left[\exists i \in I \ (x = x_i) \rightarrow x \in A \right] \equiv \forall i \in I \ (x_i \in A)$
+\end{enumerate}
+\end{example}
+
+\clearpage
+
+\begin{theorem}[Families of sets]
+$\mathcal{F}$: Families of sets where $\mathcal{F}$ is a set of other sets. For example, $\mathcal{F}$ = $\{A, B, C\}$ where $A$, $B$, $C$ are sets.
+\end{theorem}
+
+\begin{theorem}[Power Set]
+Suppose $A$ is a set. The \textbf{Power Set} of $A$ is dentoed by $\mathcal{P}(A)$. $\mathcal{P}(A)$ is the set whose elements are all the subsets of $A$. \\
+\[\mathcal{P}(A) = \{x \mid x \subseteq A\}\]
+where $x$ is a set. \\
+For example, $A = \{7, 12\} \Rightarrow \mathcal{P}(A) = \{\emptyset, \{7\}, \{12\}, \{7, 12\}\}$ \\
+$\mathcal{P}(\emptyset) = \{\emptyset\}$
+\end{theorem}
+\begin{remark}
+The empty set, $\emptyset$, is always a subset of every set including iteself, $\emptyset$. 
+\end{remark}
+
+\begin{example}[How to Prove It 2.3.3]
+\phantom \\
+\begin{enumerate}
+	\item $x \in \mathcal{P}(A)$ means that $x$ is a subset of $A$. \\
+		$\Rightarrow x \subseteq A \equiv \forall y (y \in x \rightarrow y \in A)$
+	\item $\mathcal{P}(A) \subseteq \mathcal{P}(B)$ \\
+		$\Rightarrow \forall x \left(x \in \mathcal{P}(A) \rightarrow x \in \mathcal{P}(B)\right)$ \\
+		$\equiv \forall x \left[\forall y (y \in x \rightarrow y \in A) \rightarrow \forall y (y \in x \rightarrow y \in B)\right]$	
+	\item $B \in \{\mathcal{P}(A) \mid A \in \mathcal{F}\}\}$ \\
+		$\equiv \exists A \in \mathcal{F} \ (B = \mathcal{P}(A))$ \\
+		$\equiv \exists A \in \mathcal{F} \ \forall x (x \in B \longleftrightarrow x \in \mathcal{P}(A))$
+	\item $x \in \mathcal{P}(A) \cap \mathcal{P}(B) \equiv x \in \mathcal{P}(A) \land x \in \mathcal{P}(B)$
+\end{enumerate}
+\end{example}
+
+\begin{theorem}[Intersection of the Family]
+Intersection of the Family: $\boldsymbol{\cap\mathcal{F}}$ contains the elements that all the sets in $\mathcal{F}$ have in common (given that $\mathcal{F} \neq \emptyset$). The elements must be in all sets $A$. \\
+\[\cap\mathcal{F} = \{x \mid \forall A \in \mathcal{F} \ (x \in A)\} = \{x \mid \forall A (A \in \mathcal{F} \rightarrow x \in A)\}\]
+\end{theorem}
+
+\begin{theorem}[Union of the Family]
+Union of the Family: $\boldsymbol{\cup\mathcal{F}}$ contains all the possible elements that the sets in $\mathcal{F}$ have. The elements must be in at least $1$ set $A$. \\
+\[\cup\mathcal{F} = \{x \mid \exists A\ \in \mathcal{F} (x \in A)\} = \{x \mid \exists A (A \in \mathcal{F} \land x \in A\}\]
+\end{theorem}
+
+\phantom \\ \\
+Consider the following, $\mathcal{F} = \{\{1, 2, 3, 4\}, \{2, 3, 4, 5\}, \{3, 4, 5, 6\}$. \\
+It follows that, $\cap\mathcal{F} = \{3, 4\}$ and $\cup\mathcal{F} = \{1, 2, 3, 4, 5, 6\}$ 
+
+\begin{remark}
+	Note: If $A$ and $B$ are the only two sets and $\mathcal{F} = \{A, B\}$, then $\cap\mathcal{F} = A \cap B$ and $\cup\mathcal{F} = A \cup B$
+\end{remark}
+
+\phantom \\ \\
+Consider the following, $x \in \cap\mathcal{F} \equiv \forall A(A \ \in \ \mathcal{F} \rightarrow x \ \in \ A)$. \\
+Also consider the following, $x \in \cup \{\mathcal{P}(A) \mid A \ \in \ \mathcal{F}\}$. This means that $x$ is an element of the union of the set of all power sets of $A$ where $A$ is an element of the family of sets $\mathcal{F}$. The union of all power sets is a large set that contains all of the subsets of $A$. For $x$ to be an element of it, $x \in \mathcal{P}(A) \implies x \subseteq A$; $x$ is one of the subsets of $A$. $x$ is an element of at least one of the sets $\mathcal{P}(A)$ for $A \ \in \ \mathcal{F}$ (by definiton of union). It follows that $\exists A \in \mathcal{F} (x \in \mathcal{P}(A)) \equiv \exists A \in \mathcal{F} (x \subseteq A) \equiv \exists A \in \mathcal{F} \forall y (y \in x \rightarrow y \in A)$
+
+\begin{theorem}[Alternative Notation]
+	\[\mathcal{F} = \{A_i \mid i \in I\}\]
+	\[\cap\mathcal{F} = \cap_{i \in I}A_i = \{x \mid \forall i \in I(x \in A_i)\}\]
+	\[\cup\mathcal{F} = \cup_{i \in I}A_i = \{x \mid \exists i \in I(x \in A_i)\}\]
+\end{theorem}
+
+\begin{example}[How to Prove It 2.3.7]
+	$I = \{1, 2, 3\}$, $A_1 = \{1, 2, 3, 4\}$, $A_2 = \{2, 3, 4, 5\}$, $A_3 = \{3, 4, 5, 6\}$
+	\[\cap_{i \in I}A_i = \{3, 4\}\]
+	\[\cup_{i \in I}A_i = \{1, 2, 3, 4, 5, 6\}\]
+\end{example}
+
+
 \section{Proofs}
 \subsection{Proof strategies}
+\textbf{Theorem}: If certain \textit{assumptions} or \textit{hypotheses} are\textbf{true}, the same \textit{conclusion} must also be \textbf{true}. The \textit{hypotheses} and \textit{conclusion} often contain \textbf{free variables}. If we assign a value to them, it is called an \textbf{instance} (case) of the theorem. Therefore, for a theorem to be true, every instance must be true. It follows that if the hypotheses is \textbf{true} then the conclusion must be \textbf{true}. \\
+\phantom \\ \\
+\textbf{Counterexample}: Instance  where the hypotheses are \textbf{true} but conclusion if \textbf{false}. Therefore, the theorem is \textbf{false}.
+
+\begin{theorem}[Goal: $P \rightarrow Q$; Direct]
+	To prove a goal of the form $P \rightarrow Q$, assume that $P$ is \textbf{true} and then prove $Q$. \\
+	Before Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & $P \rightarrow Q$ \\
+		\textasciitilde & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	After Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & $Q$ \\
+		\textasciitilde & \\
+		$P$ & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	Form of the Final Proof: \\
+	Suppose $P$ (is true). [Proof of $Q$ (is true) goes here]. Therefore, $P \rightarrow Q$.
+\end{theorem}
+\phantom \\ \\
+Consider the following statement, prove that if $0 < a < b$ then $a^2 < b^2$ where $a$ and $b$ are real numbers. \\
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$a$ and $b$ are real numbers & $0 < a < b \rightarrow a^2 < b ^2$ \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+For a start, we assume $0 < a < b$ to be true, and use this assumption to prove $a^2 < b^2$.
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens & Goal \\
+		\hline
+		$a$ and $b$ are real numbers & $a^2 < b ^2$ \\
+		$0 < a < b$ &  \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+We compare the inequalities $a < b$ and $a^2 < b^2$. To make $a < b$ sort of look like $a^2 < b^2$, we multiply both sides of the inequality by both $a$ and $b$. We get $a^2 < ab$ and $ab < b^2$. Combining the two, we get $a^2 < b^2$. Therefore, if $0 < a < b$ then $a^2 < b^2. \qed$
 \subsection{Proofs involving negations and conditionals}
 \subsection{Proofs involving quantifiers}
 \end{document}
