@@ -362,7 +362,7 @@ It is also important to note that $\forall x \in A$ and $\exists x \in A$ are bo
 Consider the following, 
 \begin{itemize}
 	\item $S = \{x \mid \exists n \in \mathbb{N} \ (x = n^2)\} = \{n^2 \mid n \in \mathbb{N}\}$
-	\item $x \in \{n^2 \mid n \in \mathbb{N}\} \ equiv \exists n \in \mathbb{N} \ (x = n^2)$
+	\item $x \in \{n^2 \mid n \in \mathbb{N}\} \equiv \exists n \in \mathbb{N} \ (x = n^2)$
 \end{itemize}
 Suppose $P = \{p_1, p_2, p_3, \dots, p_100\}$, and we can represent the elements as $p_i$ where $i \in I$. $I = \{1, 2, 3, \dots, 100\} = \{i \in \mathbb{N} \mid 1 \leq i \leq 100\}$. Therefore, $P = \{p_i \mid i \in I\}$ \\
 $I$ is called the \textbf{index set} because $i$ is the \textbf{index}, and $\{p_i \mid i \in I\}$ is called an \textbf{indexed family}. \\
@@ -504,7 +504,201 @@ For a start, we assume $0 < a < b$ to be true, and use this assumption to prove 
 	\end{tabular}
 \end{center}
 \phantom \\ \\
-We compare the inequalities $a < b$ and $a^2 < b^2$. To make $a < b$ sort of look like $a^2 < b^2$, we multiply both sides of the inequality by both $a$ and $b$. We get $a^2 < ab$ and $ab < b^2$. Combining the two, we get $a^2 < b^2$. Therefore, if $0 < a < b$ then $a^2 < b^2. \qed$
+We compare the inequalities $a < b$ and $a^2 < b^2$. To make $a < b$ sort of look like $a^2 < b^2$, we multiply both sides of the inequality by both $a$ and $b$. We get $a^2 < ab$ and $ab < b^2$. Combining the two, we get $a^2 < b^2$. Therefore, if $0 < a < b$ then $a^2 < b^2. \qed$ \\
+
+\begin{theorem}[Goal: $P \rightarrow Q$; Contrapositive]
+	To prove a goal of the form $P \rightarrow Q$, assume $Q$ is \textbf{false} and prove that $P$ is \textbf{false}.
+	\[P \rightarrow Q \equiv \lnot Q \rightarrow \lnot P\]
+	Before Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & $P \rightarrow Q$ \\
+		\textasciitilde & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	After Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & $\lnot P$ \\
+		\textasciitilde & \\
+		$\lnot Q$ & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	Form of the Final Proof: \\
+	Suppose $Q$ is false. [Proof of $\lnot P$ goes here]. Therefore, $P \rightarrow Q$.
+\end{theorem}
+\phantom \\ \\
+Consider the statement, suppose $a$, $b$, and $c$ are real numbers and $a > b$. Prove that if $ac \leq bc$ then $c \leq 0$. \\
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$a, b, c \in \mathbb{R}$ & $c \leq 0$\\
+		$a > b$ & \\
+		$ ac \leq bc$ & \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+We will prove the contrapositive. Suppose $c > 0$. $a > b$ follows that by multiplying $c$ to the inequality, $ac > bc$ which is the contra of $ac \leq bc$. Therefore, if $ac \leq bc$ then $c \leq 0. \qed$ \\
+
+
 \subsection{Proofs involving negations and conditionals}
+Usually easier to prove a positive statement than a negative statement. It is helpful to re-express a goal of the form $\lnot P$ before proving it.
+\begin{theorem}[Goal: $\lnot{P}$]
+	To prove a goal of the form $\lnot{P}$, if possible, re-express the goal in some other ofrm and then use one of the proof stategies for this other goal form. 
+\end{theorem}
+\phantom \\ \\
+Consider the statement, $A \cap C \subseteq B$ and $a \in C$, prove that $a \notin A \setminus B$. After some manipulation, $a \notin A \setminus B \equiv \lnot(a \in A \setminus B) \equiv \lnot (a \in A \land a \notin B) \equiv a \notin A \lor a \in B \equiv a \in A \rightarrow a \in B$. \\
+Suppose $a \in A$. Since $a \in C$, then $a \in A \cap C$. But then since $A \cap C \subseteq B$, it follows that $a \in B$. Therefore, it cannot be these case that $a$ is an element of $A$ and not $B$, thus, $a \in A \setminus B. \qed$ 
+
+\begin{theorem}[Goal: $\lnot{P}$; Contradiction]
+	Assume $P$ is true and try to reach a contradiction (usually of one of the givens). Once you have reached a contradiction, you can conclude that $P$ must be false (because the given must be true!).
+	Before Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & $\lnot{P}$ \\
+		\textasciitilde & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	After Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & Contradiction \\
+		\textasciitilde & \\
+		$P$ & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	Form of the Final Proof: \\
+	Suppose $P$ is true. [Proof of Contradiction goes here]. Therefore, $P$ is false.
+\end{theorem}
+\phantom \\ \\
+Consider the statement, prove that if $x^2 + y = 13$ and $y \neq 4$ then $x \neq 3$.
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$x^2 + y = 13$ & $x \neq 3$ \\
+		$y \neq 4$ & \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+At this current state, suppose $x^2 + y =13$ and $y \neq 4$. [Proof of $x \neq 3$ goes here]. Therefore, if $x^2 + y =13$ and $y \neq 4$, then $x \neq 3$. \\
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$x^2 + y = 13$ & Contradiction \\
+		$y \neq 4$ & \\
+		$x \neq 3$ & \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+Suppose $x^2 + y =13$ and $y \neq 4$. Suppose $x = 3$. [Proof of Contradiction goes here]. Thus, $x \neq 3$. Therefore, if $x^2 + y = 13$ and $y \neq 4$, then $x \neq 3$. \\
+Therefore, for the final proof, suppose $x^2 + y =13$ and $y \neq 4$. Suppose $x = 3$. When $x = 3, (3)^2 + y = 13 \Rightarrow y = 13 - 9 = 4$. But this contradicts the condition that $y \neq 4$. Therefore, $x \neq 3$. Thus, if $x^2 + y = 13$ and $y \neq 4$, then $x \neq 3$. \\
+\phantom \\ \\
+
+\begin{theorem}[Given: $\lnot{P}$; Contradiction]
+	If you are doing a proof by contradiction, try making $P$ your goal. If you can prove $P$ (is true), then the proof is complete, bceause $P$ (is true) contradicts the given $P$.
+	Before Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		$\lnot{P}$ & contradiction \\
+		\textasciitilde & \\
+		\textasciitilde & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	After Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		$\lnot{P}$ & $P$ \\
+		\textasciitilde & \\
+		\textasciitilde & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	Form of the Final Proof: \\
+	\phantom \ [Proof of $P$ goes here]. Since we already know $\lnot P$, this is a contradiction.
+\end{theorem}
+\phantom \\ \\
+In many cases, the logical form of a statement can be discovered by writing out the definition of some mathematical word or symbol that occurs in the statement. \\
+\phantom \\ \\
+Consider the statement, suppose $A$, $B$, and $C$ are sets, $A \setminus B \subseteq C$, and $x$ is anything at all. Prove that if $x \in A \setminus C$ then $x \in B$.
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$A \setminus B \subseteq C$ & $x \in B$ \\
+		$x \in A \setminus C$ & \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+Since $x \in B$ cannot be broken down further, we will proceed with a proof by contradiction. \\
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$A \setminus B \subseteq C$ & Contradiction \\
+		$x \in A \setminus C$ & \\
+		$x \notin B$ & \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+At this current state, suppose $x \in A \setminus C$. Suppose $x \notin B$. [Proof of Contradiciton goes here]. Therefore, $x \in B$. Thus, if $x \in A \setminus C$, then $x \in B$. \\
+However, it is still not immediately obvious on how to the contradiciton. Let us break down the givens and see what we can find. Notice that the new given ($x \notin C$) has the form $\lnot{P}$. Using the strategy where a given has $\lnot{P}$. \\
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$A \setminus B \subseteq C$ & $x \in C$ \\
+		$x \in A$ & \\
+		$x \notin C$ & \\
+		$x \notin B$ & \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+At this current state, suppose $x \in A \setminus C$. This means that $x \in A$ and $x \notin C$. Suppose $x \notin B$. [Proof of $x \in C$ goes here]. This contradicts $x \notin C$. Therefore, $x \in B$. Thus, if $x \in A \setminus C$, then $x \in B$. \\
+Therefore, for the final proof,  suppose $x \in A \setminus C$. This means that $x \in A$ and $x \notin C$. Suppose $x \notin B$. Since $x \in A$ and $x \notin B$, it follows that $x \in A \setminus B$. Thus, $A \setminus B \subseteq C$ follows that $x \in C$. This contradicts $x \notin C$. Therefore, $x \in B$. Thus, if $x \in A \setminus C$, then $x \in B. \qed$
+
 \subsection{Proofs involving quantifiers}
 \end{document}
