@@ -552,8 +552,15 @@ Consider the statement, suppose $a$, $b$, and $c$ are real numbers and $a > b$. 
 \end{center}
 \phantom \\ \\
 We will prove the contrapositive. Suppose $c > 0$. $a > b$ follows that by multiplying $c$ to the inequality, $ac > bc$ which is the contra of $ac \leq bc$. Therefore, if $ac \leq bc$ then $c \leq 0. \qed$ \\
+\begin{remark}
+	\phantom \\ 
+	\begin{itemize}
+		\item $P \rightarrow Q$: modus ponens
+		\item $\lnot{Q} \rightarrow \lnot{P}$: modus tollens
+	\end{itemize}
+\end{remark}
 
-
+\pagebreak
 \subsection{Proofs involving negations and conditionals}
 Usually easier to prove a positive statement than a negative statement. It is helpful to re-express a goal of the form $\lnot P$ before proving it.
 \begin{theorem}[Goal: $\lnot{P}$]
@@ -698,7 +705,163 @@ However, it is still not immediately obvious on how to the contradiciton. Let us
 \end{center}
 \phantom \\ \\
 At this current state, suppose $x \in A \setminus C$. This means that $x \in A$ and $x \notin C$. Suppose $x \notin B$. [Proof of $x \in C$ goes here]. This contradicts $x \notin C$. Therefore, $x \in B$. Thus, if $x \in A \setminus C$, then $x \in B$. \\
-Therefore, for the final proof,  suppose $x \in A \setminus C$. This means that $x \in A$ and $x \notin C$. Suppose $x \notin B$. Since $x \in A$ and $x \notin B$, it follows that $x \in A \setminus B$. Thus, $A \setminus B \subseteq C$ follows that $x \in C$. This contradicts $x \notin C$. Therefore, $x \in B$. Thus, if $x \in A \setminus C$, then $x \in B. \qed$
+Therefore, for the final proof,  suppose $x \in A \setminus C$. This means that $x \in A$ and $x \notin C$. Suppose $x \notin B$. Since $x \in A$ and $x \notin B$, it follows that $x \in A \setminus B$. Thus, $A \setminus B \subseteq C$ follows that $x \in C$. This contradicts $x \notin C$. Therefore, $x \in B$. Thus, if $x \in A \setminus C$, then $x \in B. \qed$ \\
+\phantom \\ \\
+To use a given of the form $\lnot{P}$: If possible, re-express this given in some other form where you get a positive statement. (Though, you can still use the contradiction method either way; Proof by Contradiction is usually a `last' resort option).
+
+\begin{theorem}[Given: $P \rightarrow Q$; Rules of Inference]
+	If you are also given $P$, or if you can prove that $P$ is true, then you can use this given to conclude that $Q$ is true. Since $P \rightarrow Q$ is equivalent to $\lnot{Q} \rightarrow \lnot{P}$ (by contrapositive law), if you can conclude $Q$ is false, you can use this given to conclude that $P$ is false. \\
+	\phantom \\ \\
+	There is no `fixed' proof strategy for the Givens and Goal table here. Instead, we will be using an example below.
+\end{theorem}
+\phantom \\ \\
+Consider the statement, suppose $P \rightarrow (Q \rightarrow R)$, prove that $\lnot{R} \rightarrow (P \rightarrow \lnot{Q})$. \\
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$P \rightarrow (Q \rightarrow R)$ & $\lnot{R} \rightarrow (P \rightarrow \lnot{Q})$ \\
+		\hline
+		$P \rightarrow (Q \rightarrow R)$ & $P \rightarrow \lnot{Q}$ \\
+		$\lnot{R}$ & \\
+		\hline
+		$P \rightarrow (Q \rightarrow R)$ & $\lnot{Q}$ \\
+		$\lnot{R}$ & \\	
+		$P$ & \\
+		\hline
+		$P \rightarrow (Q \rightarrow R)$ & $\lnot{Q}$ \\
+		$\lnot{R}$ & \\	
+		$P$ & \\
+		$Q \rightarrow R$ & \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+For the final proof, suppose $P \rightarrow (Q \rightarrow R)$. Suppose $\lnot{R}$. Suppose $P$, it follows that $Q \rightarrow R$. Since $Q \rightarrow R \equiv \lnot{R} \rightarrow \lnot{Q}$, and $\lnot{R}$, it follows that $\lnot{Q}$. Therefore, $P \rightarrow \lnot{Q}$. Thus, $\lnot{R} \rightarrow (P \rightarrow \lnot{Q}). \qed$ \\
 
 \subsection{Proofs involving quantifiers}
+If you can give a proof of the goal $P(x)$ that would work no matter what $x$ was, then you can conclude that $\forall{x}P(x)$ must be true. To make sure that your proof would work \textit{for any} value of $x$, it is important to start your proof with no assumptions about $x$. We can say this by saying that $x$ must be arbitrary. \\
+\begin{theorem}[Goal: $\forall{x}P(x)$]
+	To prove a goal of the form $\forall{x}P(x)$, let $x$ stand for an arbitrary object and prove $P(x)$. The letter $x$ must be a new variable in the proof. If $x$ is already being used in the proof to stand for something, then you must choose an unused variable (for example, $y$), to stand for the arbitrary object and prove it ($P(y)$). \\
+	Before Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & $\forall{x}P(x)$\\
+		\textasciitilde & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	After Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & $P(x)$\\
+		\textasciitilde & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	Form of the Final Proof: \\
+	Let $x$ be arbitrary. [Proof of $P(x)$ goes here]. Since $x$ was arbitrary, we can conclude that $\forall{x}P(x)$ (is true).
+\end{theorem}
+Consider the following statement, suppose $A$, $B$, and $C$ are sets, and $A \setminus B \subseteq C$. Prove that $A \setminus C \subseteq B$. \\
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$A \setminus B \subseteq C$ & $A \setminus C \subseteq B \equiv \forall{x}(x \in A \setminus C \rightarrow x \in B)$ \\
+		\hline
+		$A \setminus B \subseteq C$ & $x \in A \setminus C \rightarrow x \in B$ \\
+		\hline
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+For the final proof, let $x$ be arbitrary. Suppose $x \in A \setminus C$. This means that $x \in A$ and $x \notin C$. Suppose $x \notin B$, it follows that $x \in A \setminus B$. Since $x \in A \setminus B$, $x \in C$. But this contradicts $x \notin C$. Therefore, $x \in B$. Hence, if $x \in A \setminus C$ then $x \in B$. Since $x$ was arbitrary, we can conclude that $\forall{x}(x \in A \setminus C \rightarrow x \in B)$ so $A \setminus C \subset B. \qed$
+\phantom \\ \\
+
+\begin{theorem}[Goal: $\exists{x}P(x)$]
+	To prove a goal of the form $\exists{x}P(x)$, find a value for which $P(x)$ will be true. Let $x = \text{that value}$. Prove $P(x)$ for this value of $x$. Do note that, $x$ should be a new variable. If it is already being used, use another variable, and use $\exists{y}P(y)$ and prove $P(y)$. \\
+	Before Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & $\exists{x}P(x)$\\
+		\textasciitilde & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	After Proof strategy:
+	\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens (know assumed to be true) & Goal (statement to be proven) \\
+		\hline
+		\textasciitilde & $P(x)$\\
+		\textasciitilde & \\
+		$x = \text{value}$ & \\
+		\hline
+	\end{tabular}
+	\end{center}
+	\phantom \\ \\
+	Form of the Final Proof: \\
+	Let $x = \text{value}$. [Proof of $P(x)$ goes here]. Thus, $\exists{x}P(x)$.
+\end{theorem}
+Consider the following statement, prove that for every real number $x$, if $x > 0$, then there is a real number $y$ such that $y(y + 1) = x$. \\
+\phantom \\ \\
+We start by solving for $y$. $y^2 + y - x = 0 \Rightarrow y = \frac{-1 \pm \sqrt{1 + 4x}}{2}$. Now, we just need to let $y = \text{one of the values}$ to prove that $y(y + 1) = x$. \\
+For the final proof, let $x$ be an arbitrary real number, and suppose $x > 0$. Let $y = \frac{-1 + \sqrt{1 + 4x}}{2}$ which is \textbf{real} since $x > 0$. It follows that, 
+\begin{center}
+	\begin{align*}
+		y(y + 1) &= \left(\frac{-1 + \sqrt{1 + 4x}}{2}\right) \left(\frac{-1 + \sqrt{1 + 4x}}{2} + 1\right) \\
+		&= \left(\frac{-1 + \sqrt{1 + 4x}}{2}\right) \left(\frac{1 + \sqrt{1 + 4x}}{2}\right) \\
+		&= \frac{1 + 4x -1}{4} \\
+		&= x
+	\end{align*}
+\end{center}
+\phantom \\ \\
+Thus, $\exists{y}\left[y(y+1) = x\right]$. Therefore, $x > 0 \rightarrow \exists{y}\left[y(y+1) = x\right]$. Since $x$ was arbitrary, we can conclude that $\forall{x}\left(x > 0 \rightarrow \exists{y}\left[y(y+1) = x\right]\right). \qed$
+
+\begin{theorem}[Given: $\exists{x}P(x)$]
+	To use a given of the form $\exists{x}P(x)$, introduce a new variable $x_0$ into the proof to stand for an object for which $P(x_0)$ is true. This means that you can now assume $P(x_0)$ is true. This is called the rule of inference: \textbf{Existential Instantiation}. \\
+	Please note that you can assume that $x_0$ stands for some object for which $P(x_0)$ is true \textbf{BUT} you cannot assume anything else about $x_0$. This means that you do not get to choose a particular value to plug in for $x$.
+\end{theorem}
+
+\begin{theorem}[Given: $\forall{x}P(x)$]
+	To use a given of the form $\forall{x}P(x)$, introduce any value for $x$. Use this given to conclude that $x = a$ and hence, $P(a)$ is true. This is called the rule of inference: \textbf{Universal Instantiation}.
+\end{theorem}
+\phantom \\ \\
+Consider the following statement, suppose $\mathcal{F}$ and $\mathcal{G}$ are families of sets and $\mathcal{F} \cap \mathcal{G} \neq \emptyset$; Prove that $\cap{\mathcal{F}} \subseteq \cup{\mathcal{G}}$.
+\begin{center}
+	\begin{tabular}[t]{| c | c |}
+		\hline
+		Givens  & Goal  \\
+		\hline
+		$\mathcal{F} \cap \mathcal{G} \neq \emptyset$ & $\cap{\mathcal{F}} \subseteq \cup{\mathcal{G}}$ \\
+		\hline
+		$\exists{A}(A \in \mathcal{F} \cap \mathcal{G})$ & $\forall{x}\left(x \in \cap{\mathcal{F}} \rightarrow x \in \cup{\mathcal{G}}\right)$ \\
+		\hline
+		$\exists{A}(A \in \mathcal{F} \cap \mathcal{G})$ & $\forall{x}\left(\forall{A}\in\mathcal{F}(x \in A) \ \rightarrow \ \exists{A}\in\mathcal{G}(x \in A)\right)$ \\
+		\hline
+		$\exists{A}(A \in \mathcal{F} \cap \mathcal{G})$ & $\exists{A}\in\mathcal{G}(x \in A)$ \\
+		$\forall{A}\in\mathcal{F}(x \in A)$ & \\
+		\hline
+		$A_0 \in \mathcal{F} \cap \mathcal{G} \equiv A_0 \in \mathcal{F} \land A_0 \in \mathcal{G}$ & $\exists{A}\in\mathcal{G}(x \in A)$ \\
+		$\forall{A}\in\mathcal{F}(x \in A)$ & \\		
+		\hline	
+	\end{tabular}
+\end{center}
+\phantom \\ \\
+Since $A_0 \in \mathcal{F}$, we can conclude that $x \in A_0$ from $\forall{A}\in\mathcal{F}(x \in A)$. \\
+For the final proof, suppose $x \in \cap{\mathcal{F}}$. Since $\mathcal{F} \cap \mathcal{G} \neq \emptyset$, we can let $A_0$ be an element of $\mathcal{F} \cap \mathcal{G}$. Thus, $A_0 \in \mathcal{F}$ and $A_0 \in \mathcal{G}$. Since $x \in \cap{\mathcal{F}}$ and $A_0 \in \mathcal{F}$, it follows that $x \in A_0$. We also know that $A_0 \in \mathcal{G}$. Therefore, $x \in \cup{\mathcal{G}}. \qed$
 \end{document}
