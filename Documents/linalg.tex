@@ -1,0 +1,170 @@
+\documentclass[../setup.tex]{subfiles}
+\graphicspath{{../images}}
+\usepackage{hyperref} % for '\texorpdfstring' command
+\usepackage{bm}
+
+\begin{document}
+
+\title{Linear Algebra}
+\author{Julian Dominic}
+\date{04 November 2022}
+\pagenumbering{gobble}
+\maketitle
+\clearpage
+
+% ===== Define a preface environment =====
+\newcommand{\prefacename}{Preface}
+\newenvironment{preface}{
+    {\noindent \bfseries \Huge \prefacename}
+    \begin{center}
+        % \phantomsection \addcontentsline{toc}{chapter}{\prefacename} % enable this if you want to put the preface in the table of contents
+        \thispagestyle{plain}
+    \end{center}%
+}
+
+
+
+\preface
+I wrote these notes principally FOR understanding, they are meant for future reference for a refresher on what I have learnt. As such, certain definitions may not be exactly precise but are rephrased into simpler terms. \\
+I am currently using Schaum's Easy Outlines: Linear Algebra - Crash Course. ISBN 978-0-07-139880-0. \\
+I plan to learn and use Linear Algebra by Hoffman and Kunze in the future. But I am currently clearing the pre-requisities for the book as the time of writing (04/11/2022); I am still learning proofs. \\ 
+
+\tableofcontents
+\pagenumbering{gobble}
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Vectors in $\mathbb{R}^n$}
+Although we will restrict ourselves in this chapter to vectors whose elements come from the field of real numbers, denoted by $\mathbb{R}$, many of our operations also apply to vectors whose entries come from arbitrary field $\boldsymbol{K}$. In the context of vectors, the elements of our number fields are called \textit{scalars}. \\
+\subsection{List of Numbers}
+Suppose the height (in centimeters) of eight students are listed as follows:
+\[155 \ 165 \ 175 \ 185 \ 180 \ 170 \ 160 \ 150\]
+One can denote all the values in the list using only one symbol, for example $h$, but with different subscripts; giving rise to $h_i$ where $1 \leq i \leq 8$. 
+\[h_1 \ h_2 \ h_3 \ h_4 \ h_5 \ h_6 \ h_7 \ h_8\]
+It is easy to see that each subscript denotes the position of the value in the list; $h_1 = 155$, $h_2 = 165$, etc. Such a list of values, $\bm{h} = (h_1, h_2, h_3, \dots, h_8)$ is called a \textit{linear array} or \textit{vector}. \\
+\phantom \\ \\
+The set of all $n$-tuples of real numbers, denoted by $\mathbb{R}^n$, is called $n$-\textit{space}. A particular $n$-tuple in $\mathbb{R}^n$ like $\bm{u} = (a_1, a_2, \dots, a_n)$ is called a \textit{point} or \textit{elements} of $\bm{u}$. Moreover, when discussing the space/domain of $\mathbb{R}^n$, we use the term \textit{scalar} for the elements in $\mathbb{R}$ (notice that $n = 1$). \\
+\phantom \\ \\
+Consider two vectors, $u$ and $v$, are equal, we can express it as $\bm{u} = \bm{v}$ if they have the same number of elements and if the corresponding elements (position of the elements) are equal. Thi\ means that while vectors $(1, 2, 3)$ and $(2, 3, 1)$ have the same number of elements, the vectors are not equal because of the corresponding elements do not match each other from one vector to the other. \\
+\phantom \\ \\
+The vector $(0, 0, \underbrace{\dots}_{n \text{ dots}}, 0)$; where all of the elements are zero, is called the \textit{zero vector}, and it is usually denoted by $\boldsymbol{0}$. 
+
+
+\subsection{Column Vectors}
+Sometimes a vector in $n$-space $\mathbb{R}^n$ is written vertically, rather than horizontally as shown previously. Such a vector is called a \textit{column vector} while the ones shown previously are called \textit{row vectors}. For example, the following are column vectors that belong to $\mathbb{R}^2$, $\mathbb{R}^2$, $\mathbb{R}^3$, and $\mathbb{R}^3$, respectively:
+\[
+	\begin{bmatrix}
+	1 \\
+	2 \\
+	\end{bmatrix}
+\ \ 
+	\begin{bmatrix}
+	3 \\
+	4 \\
+	\end{bmatrix}
+\ \
+	\begin{bmatrix}
+	1 \\
+	5 \\
+	6 \\
+	\end{bmatrix}
+\ \
+	\begin{bmatrix}
+	1.5 \\
+	\frac{2}{3} \\
+	-15 \\
+	\end{bmatrix}
+\]
+\begin{remark}
+We also note that any operation defined for row vectors is defined analogously for column vectors.
+\end{remark}
+\pagebreak
+
+
+\subsection{Vector Addition and Scalar Multiplication}
+Consider two vectors $u$ and $v$ in $\mathbb{R}^n$:
+\[\bm{u} = (a_1, \dots, a_n) \text{ and } \bm{v} = (b_1, \dots, b_n)\]
+Their \textit{sum} can be expressed as $\bm{u} + \bm{v}$. $\bm{u} + \bm{v}$ is the \textit{vector} that is obtained by adding the corresponding elements from $\bm{u}$ and $\bm{v}$. It is as follows:
+\[\bm{u} + \bm{v} = (a_1 + b_2, \dots, a_n + b_n)\]
+The \textit{scalar product} of the vector $\bm{u}$ by a real number $k$ can be expressed as $k\bm{u}$. $k\bm{u}$ is the vector obtained by multiplying each element of $\bm{u}$ by $k$. It is as follows:
+\[k\bm{u} = k(a_1, \dots, a_n) = (ka_1, \dots, ka_n)\]
+\begin{remark}
+Notice that $\bm{u} + \bm{v}$ and $k\bm{u}$ are also vectors in $\mathbb{R}^n$. The sum of vectors who have different numbers of elements is not defined.
+\end{remark}
+\phantom \\
+\textit{Negatives} and \textit{subtraction} are defined in $\mathbb{R}^n$ as follows:
+\[-\bm{u} = (-1)\bm{u} \ \ \ \ \text{ and }\ \ \ \  \bm{u} - \bm{v} = \bm{u} + (-\bm{v})\]
+The vector $-u$ is called the negative of $\bm{u}$, and $\bm{u} - \bm{v}$ is called the \textit{difference} of $\bm{u}$ and $\bm{v}$. \\
+\phantom \\ \\
+Now suppose we are given vectors $\bm{u}_1, \dots, \bm{u}_m$ in $\mathbb{R}^n$ and scalars $k_1, \dots, k_m$ in $\mathbb{R}$. We can multiply the vectors by corresponding scalars and then add the resultant scalar products to form the vector:
+\[\bm{v} = k_1\bm{u}_1 + k_2\bm{u}_2 + \dots + k_m\bm{u}_m\]
+The vector $\bm{v}$ is called a \textit{linear combination} of the vectors $\bm{u}_1, \dots, \bm{u}_m$. \\
+\phantom \\ \\
+\begin{theorem}[Basic properties of vectors under the operations of vector addition and scalar multiplication]
+For any vectors $\bm{u}$, $\bm{v}$, $\bm{w}$ $\in \mathbb{R}^n$ and any scalars $k$, $k'$ $\in \mathbb{R}$,
+\begin{center}
+\begin{tabular}[t]{| c | c |}
+\hline
+	$(\bm{u} + \bm{v}) + \bm{w} = \bm{u} + (\bm{v} + \bm{w})$ & $k(\bm{u} + \bm{v}) = k\bm{u} + k\bm{v}$ \\
+\hline
+	$\bm{u} + \boldsymbol{0} = \bm{u}$ & $(k + k')\bm{u} = k\bm{u} + k'u$ \\
+\hline
+	$\bm{u} + (-\bm{u}) = \boldsymbol{0}$ & $(kk')\bm{u} = k(k'\bm{u})$ \\
+\hline
+	$\bm{u} + \bm{v} = \bm{v} + \bm{u}$ & $1(\bm{u}) = \bm{u}$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{theorem}
+\phantom \\ \\
+Suppose $\bm{u}$ and $\bm{v}$ are vectors in $\mathbb{R}^n$ for which $\bm{u} = kv$ for some non-zero scalar $k$ in $\mathbb{R}$. It follows that $\bm{u}$ is a \textit{multiple} of $\bm{v}$. Also, $\bm{u}$ is said to be in the \textit{same} or \textit{opposite direction} as $\bm{v}$ for $k > 0$ or $k < 0$.
+\pagebreak
+
+
+\subsection{Dot Product}
+Consider the following arbitrary vectors $\bm{u}$ and $\bm{v}$ in $\mathbb{R}^n$:
+\[\bm{u} = (a_1, \dots, a_n) \text{ and } \bm{v} = (b_1, \dots, b_n)\]
+The \textit{dot product} or \textit{inner product} or \textit{scalar product} of $\bm{u}$ and $\bm{v}$ is denoted and defined by $\bm{u} \cdot \bm{v} = a_1b_1 + \dots a_nb_n$. $\bm{u} \cdot \bm{v}$ is obtained by multiplying corresponding components and taking the sum of the resulting products. The vectors $\bm{u}$ and $\bm{v}$ are said to be \textit{orthogonal} (or \textit{perpendicular}) if their \textit{dot product} is zero; $\bm{u} \cdot \bm{v} = 0$.
+\begin{theorem}[Basic properties of the dot product in $\mathbb{R}^n$]
+For any vectors $\bm{u}$, $\bm{v}$, $\bm{w}$ $\in \mathbb{R}^n$ and any scalar $k \in \mathbb{R}$,
+\begin{center}
+\begin{tabular}[t]{| c | c |}
+\hline
+	$(\bm{u} + \bm{v}) \cdot \bm{w} = \bm{u} \cdot \bm{w} + \bm{v} \cdot \bm{w}$ & $\bm{u} \cdot \bm{v} = \bm{v} \cdot \bm{u}$ \\
+\hline
+	$(k\bm{u}) \cdot \bm{v} = k (\bm{u} \cdot \bm{v})$ & $u \cdot \bm{u} \geq 0$, and $\bm{u} \cdot \bm{u} = 0$ if $\bm{u} = 0$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{theorem}
+To be somewhat complete (and rigorous) with the properties, consider $\bm{u} \cdot (k\bm{v})$. It is similar to the cell on row 2, column 1. It follows that $\bm{u} \cdot (k\bm{v}) = (k\bm{v}) \cdot \bm{u} = k(\bm{v} \cdot \bm{u}) = k(\bm{u} \cdot \bm{v})$. \\
+\phantom \\ \\
+The space $\mathbb{R}^n$ with the above operations of vector addition, scalar multiplication, and dot product is usually called \textbf{Euclidean} $\boldsymbol{n}$\textbf{-space}. 
+
+
+\subsection{Norm (Length) of a Vector}
+The \textit{norm} or \textit{length} of a vector $u$ in $\mathbb{R}^n$ can be expressed as $||\bm{u}||$. It is defined to be the non-negative square root of $\bm{u} \cdot \bm{u}$ (the inner product). For example, if $\bm{u} = (a_1, \dots, a_n)$, then $||\bm{u}|| = \sqrt{\bm{u} \cdot \bm{u}} = \sqrt{a_1^2 + \dots, a_n^2}$. Therefore, $||\bm{u}||$ is the square root of the sum of the squares of the elements of $\bm{u}$. Thus, $||\bm{u}|| > 0$, and $||\bm{u}|| = 0$ \textit{iff} $\bm{u} = 0$. \\
+\phantom \\ \\
+A vector $\bm{u}$ is called a \textit{unit vector} if $||\bm{u}||$ or if $\bm{u} \cdot \bm{u} = 1$ (both are equivalent). \\
+For any non-zero vector $v$ in $\mathbb{R}^n$, the vector $\hat{\bm{v}} = \frac{1}{||\bm{v}||}\bm{v} = \frac{\bm{v}}{||\bm{v}||}$ is the unique unit vector in the same direction as $\bm{v}$. The process of finding $\hat{\bm{v}}$ from $\bm{v}$ is called \textit{normalizing} $\bm{v}$. \\
+\begin{theorem}[Cauchy-Schwarz Inequality]
+For any vectors $\bm{u}, \bm{v} \in \mathbb{R}^n$, 
+\[|\bm{u} \cdot \bm{v}| \leq ||\bm{u}|| \ ||\bm{v}||\]
+\end{theorem}
+\begin{theorem}[Triangle Inequality or Minkowski's Inequality]
+For any vectors $\bm{u}, \bm{v} \in \mathbb{R}^n$,
+\[||\bm{u} + \bm{v}|| \leq ||\bm{u}|| + ||\bm{v}||\]
+\end{theorem}
+
+\section{Algebra of Matrices}
+\section{Systems of Linear Equations}
+\section{Vector Spaces}
+\section{Inner Product Spaces; Orthogonality}
+\section{Determinants}
+\section{Diagonalization; Eigenvalues and Eigenvectors}
+\section{Linear Mappings}
+\section{Canonical Forms}
+
+\end{document}
