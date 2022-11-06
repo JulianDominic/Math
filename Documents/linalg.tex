@@ -2,6 +2,12 @@
 \graphicspath{{../images}}
 \usepackage{hyperref} % for '\texorpdfstring' command
 \usepackage{bm}
+\usepackage{mleftright} % for '\mleft' and '\mright' macros
+\newcommand{\tr}[1]{\operatorname{tr}\mleft(#1\mright)} % for trace of a matrix
+\newcommand{\diag}[1]{\operatorname{diag}\mleft(#1\mright)}
+\newcommand{\tab}{\ \ \ \ }
+
+
 
 \begin{document}
 
@@ -47,7 +53,7 @@ It is easy to see that each subscript denotes the position of the value in the l
 \phantom \\ \\
 The set of all $n$-tuples of real numbers, denoted by $\mathbb{R}^n$, is called $n$-\textit{space}. A particular $n$-tuple in $\mathbb{R}^n$ like $\bm{u} = (a_1, a_2, \dots, a_n)$ is called a \textit{point} or \textit{elements} of $\bm{u}$. Moreover, when discussing the space/domain of $\mathbb{R}^n$, we use the term \textit{scalar} for the elements in $\mathbb{R}$ (notice that $n = 1$). \\
 \phantom \\ \\
-Consider two vectors, $u$ and $v$, are equal, we can express it as $\bm{u} = \bm{v}$ if they have the same number of elements and if the corresponding elements (position of the elements) are equal. Thi\ means that while vectors $(1, 2, 3)$ and $(2, 3, 1)$ have the same number of elements, the vectors are not equal because of the corresponding elements do not match each other from one vector to the other. \\
+Consider two vectors, $\bm{u}$ and $\bm{v}$, are equal, we can express it as $\bm{u} = \bm{v}$ if they have the same number of elements and if the corresponding elements (position of the elements) are equal. Thi\ means that while vectors $(1, 2, 3)$ and $(2, 3, 1)$ have the same number of elements, the vectors are not equal because of the corresponding elements do not match each other from one vector to the other. \\
 \phantom \\ \\
 The vector $(0, 0, \underbrace{\dots}_{n \text{ dots}}, 0)$; where all of the elements are zero, is called the \textit{zero vector}, and it is usually denoted by $\boldsymbol{0}$. 
 
@@ -158,13 +164,452 @@ For any vectors $\bm{u}, \bm{v} \in \mathbb{R}^n$,
 \[||\bm{u} + \bm{v}|| \leq ||\bm{u}|| + ||\bm{v}||\]
 \end{theorem}
 
+
+
 \section{Algebra of Matrices}
+\subsection{Matrices}
+A matrix $\bm{A}$ over a field $\bm{K}$ is a rectangular array of scalars:
+\[\bm{A} =
+\begin{bmatrix}
+	a_{11} & a_{12} & \dots & a_{1n} \\
+	a_{21} & a_{22} & \dots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{m1} & a_{m2} & \dots & a_{mn} \\
+\end{bmatrix}
+\]
+The rows of $\bm{A}$ are the $m$ horizontal lists of scalars:
+\[(a_{11}, \dots, a_{1n}), 
+(a_{21}, \dots, a_{2n}),
+\dots,
+(a_{m1}, \dots, a_{mn})\]
+\phantom \\ \\
+A matrix with $m$ rows and $n$ columns is called an $m \times n$ matrix which is read as $m$ by $n$ matrix. The pair of numbers $m$ and $n$ is called the size of the matrix. Suppose two matrices $\bm{A}$ and $\bm{B}$ are \textit{equal}, $\bm{A} = \bm{B}$. This is true when they have the same size and if the corresponding elements are equal. Thus, the equality of two $m \times n$ matrices is equivalent to a system of $mn$ equalities; one for each corresponding pair of elements. \\
+\phantom \\ \\
+A matrix with only one row or with only one column is called a \textit{row matrix/vector} and \textit{column matrix/vector} respectively. A matrix whose entries are all zero is called a \textit{zero matrix} and is written as $\bm{0}$. \\
+
+\subsection{Matrix Addition and Scalar Multiplication}
+Let $\bm{A} = [a_{ij}]$ and $\bm{B} = [b_{ij}]$ be two matrices with the same size; $m \times n$ matrices. The \textit{sum} of $\bm{A}$ and $\bm{B}$ can be expressed as $\bm{A} + \bm{B}$. It is the matrix obtained by adding the corresponding elements from $\bm{A}$ and $\bm{B}$:
+\[\bm{A} + \bm{B} =
+\begin{bmatrix}
+	a_{11} + b_{11} & a_{12} + b_{12}& \dots & a_{1n} + b_{1n} \\
+	a_{21 + b_{21}} & a_{22} + b_{22} & \dots & a_{2n} + b_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{m1} + b_{m1} & a_{m2} + b_{m2} & \dots & a_{mn} + b_{mn}\\
+\end{bmatrix}
+\]
+\phantom \\ \\
+The \textit{product} of a matrix $\bm{A}$ by a scalar $k$ can be expressed as $k \cdot \bm{A} = k\bm{A}$. It is the matrix obtained by multiplying each element of $\bm{A}$ by $k$: 
+\[k\bm{A} =
+\begin{bmatrix}
+	ka_{11} & ka_{12} & \dots & ka_{1n} \\
+	ka_{21} & ka_{22} & \dots & ka_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	ka_{m1} & ka_{m2} & \dots & ka_{mn} \\
+\end{bmatrix}
+\]
+\phantom \\ \\
+\textit{Negatives} and \textit{substractions} are defined in a similar fashion as vectors as seen in the first section; $-\bm{A} = (-1)\bm{A}$ and $\bm{A} - \bm{B} = \bm{A} + (-\bm{B})$. The matrix $-\bm{A}$ is called the \textit{negative} of the matrix $\bm{A}$. The matrix $\bm{A} - \bm{B}$ is called the \textit{difference} of $\bm{A}$ and $\bm{B}$. The sum of matrices with different sizes is not defined. \\
+\phantom \\ \\
+Consider $\lambda$ and $\mu$ where $\lambda, \mu \in \mathbb{R}$, and two $m \times n$ matrices $\bm{A}$ and $\bm{B}$. $\lambda\bm{A} + \mu\bm{B}$ is called a \textit{linear combination} of $\bm{A}$ and $\bm{B}$
+\phantom \\ \\
+\begin{theorem}[Basic properties of matrices under the operations of matrix addition and scalar multiplication]
+For any matrices $\bm{A}, \bm{B}, \bm{C}$ (with the same size) and any scalars $k$ and $k'$,
+\begin{center}
+\begin{tabular}[t]{| c | c |}
+\hline
+	$\left(\bm{A} + \bm{B}\right) + \bm{C} = \bm{A} + \left(\bm{B} + \bm{C}\right)$ & $k\left(\bm{A} + \bm{B}\right) = k\bm{A} + k\bm{B}$ \\
+\hline
+	$\bm{A} + \bm{0} = \bm{0} + \bm{A} = \bm{A}$ & $(k + k')\bm{A} = k\bm{A} + k'\bm{A}$ \\
+\hline
+	$\bm{A} + (-\bm{A}) = (-\bm{A}) + \bm{A} = \bm{0}$ & $(kk')\bm{A} = k(k'\bm{A})$ \\
+\hline
+	$\bm{A} + \bm{B} = \bm{B} + \bm{A}$ & $1 \cdot \bm{A} = \bm{A}$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{theorem}
+
+
+\subsection{Matrix Multiplication}
+Suppose $f(k)$ is an algebraic expression involving the letter $k$. It follows that the expression $\sum\limits_{k = 1}^nf(k)$ has the following meaning; $\sum$ is the \textit{summation symbol}, and $k$ is called the index where $1$ and $n$ are the \textit{lower} and \textit{upper bounds} respectively. As such, this means we are taking the sum of $f(k)$ from $1$ to $n$. First, we set $k = 1$ in $f(k)$ which yields $f(1)$. Next, we set $k = 2$ in $f(k)$ which yields $f(2)$, and take sum with $f(1)$ which yields $f(1) + f(2)$. We increase the value of $k$ by $1$ until we reach $n$; taking the sum of the result at each step. We should obtain the sum $f(1) + f(2) + \dots + f(n)$ at the end. \\
+\phantom \\ \\
+We also generalize our definition by allowing the sum to range from any integer $n$ to $N$. \\
+\[\sum^N_{k = n}f(k) = f(n) + f(n + 1) + f(n + 2) + \dots + f(N)\]
+The \textit{product} of matrices $\bm{A}$ and $\bm{B}$ can be expressed as $\bm{AB}$. Matrix multiplication is quite convoluted as many things are happening but we will try to break it down slowly. \\
+For a start, we begin with a special case. The product $\bm{AB}$ of a row matrix $\bm{A} = [a_{i}]$ and column matrix $\bm{B} = [b_i]$ with the same number of elements is defined to be the scalar (or $1 \times 1$ matrix) obtained by multiplying corresponding entries and adding them together:
+\[\bm{AB} = [a_1, a_2, \dots, a_n]
+\begin{bmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_n
+\end{bmatrix}
+= a_1b_1 + a_2b_2 + \dots + a_nb_n = \sum\limits_{k=1}^na_kb_k\] 
+\phantom \\ \\
+It is important to note that $\bm{AB}$ is a scalar (or a $1 \times 1$ matrix). The product $\bm{AB}$ is not defined when $\bm{A}$ and $\bm{B}$ have different numbers of elements. \\
+\phantom \\ \\
+Suppose $\bm{A} = [a_{jk}]$ and $\bm{B}  = b_[kj]$ are matrices such that the number of columns of $\bm{A}$ is equal to the number of rows of $\bm{B}$; Suppose $\bm{A}$ is an $m \times p$ matrix and $\bm{B}$ is a $p \times n$ matrix. Then the product $\bm{AB}$ is an $m \times n$ matrix whose $ij$-entry is obtained by multiplying the $i$th row of $\bm{A}$ by the $j$th column of $\bm{B}$.
+\[
+\begin{bmatrix}
+a_{11} & \dots & a_{1p} \\
+\vdots & \vdots & \vdots \\
+a_{i1} & \dots & a_{ip} \\
+\vdots & \vdots & \vdots \\
+a_{m1} & \dots & a_{mp} \\
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & \dots & b_{1j} & \dots & b_{1n} \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+b_{p1} & \dots & b_{pj} & \dots & b_{pn} \\
+\end{bmatrix} =
+\begin{bmatrix}
+c_{11} & \dots & c_{1n} \\
+\vdots & \vdots & \vdots \\
+\dots & c_{ij} & \dots \\
+\vdots & \vdots & \vdots \\
+c_{m1} & \dots & c_{mn} \\
+\end{bmatrix}
+\]
+where $c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \dots + a_{ip}b_{pj} = \sum\limits_{k = 1}^pa_{ik}b_{kj}$ \\
+\phantom \\ \\
+The product $\bm{AB}$ is not defined if $\bm{A}$ is an $m \times p$ matrix and $\bm{B}$  is a $q \times n$ matrix, where $p \neq q$. 
+\begin{example}[Schaum's Easy Outlines: Linear Algebra Crash Course - Example 2.5]
+(a) Find $\bm{AB}$ where $\bm{A} = \begin{bmatrix} 1 & 3 \\ 2 & -1 \end{bmatrix}$ and $\bm{B} = \begin{bmatrix}2 & 0 &-4 \\ 5 & -2 & 6\end{bmatrix}$. \\
+\phantom \\ \\
+Since $\bm{A}$ is $2 \times 2$ and $\bm{B}$ is $2 \times 3$, the product $\bm{AB}$ is defined and $\bm{AB}$ is a $2 \times 3$ matrix. To obtain the first row of $\bm{AB}$, multiply the first row of $\bm{A}$ by each column of $\bm{B}$. Then multiply the second row of $\bm{A}$ by each column of $\bm{B}$. \\
+\[\bm{AB} = \begin{bmatrix}2+15 & 0-6 & -4+18 \\ 4-5 & 0+2 & -8-6\end{bmatrix} = \begin{bmatrix}17 & -6 & 14 \\ 4-5 & 2 & -14\end{bmatrix}\]
+\phantom \\ \\
+(b) Suppose $\bm{A} = \begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix}$ and $\bm{B} = \begin{bmatrix}5 & 6 \\ 0 & -2\end{bmatrix}$. \\
+\[\bm{AB} = \begin{bmatrix}5+0 & 6-4 \\ 15+0 & 18-8\end{bmatrix} = \begin{bmatrix}5 & 2 \\ 15 & 10\end{bmatrix}\]
+\[\bm{BA} = \begin{bmatrix}5+18 & 10+24 \\ 0-6 & 0-8\end{bmatrix} = \begin{bmatrix}23 & 34 \\ -6 & -8\end{bmatrix}\]
+\end{example}
+\phantom \\ \\
+In part (b) of the example above, it shows that matrix multiplication is not commutative; the products $\bm{AB}$ and $\bm{BA}$ of matrices need not be equal. \\
+\begin{theorem}[Basic properties that matrix multiplication does satisfy]
+\begin{itemize}
+	\item $(\bm{AB})\bm{C} = \bm{A}(\bm{BC})$ (associative law),
+	\item $\bm{A}(\bm{B} + \bm{C}) = \bm{AB} + \bm{AC}$ (left distributive law),
+	\item $(\bm{B} + \bm{C})\bm{A} = \bm{BA} + \bm{CA}$ (right distributive law),
+	\item $k(\bm{AB}) = (k\bm{A})\bm{B} = \bm{A}k\bm{B}$, where $k$ is a scalar.
+\end{itemize}
+We note that $\bm{0A} = \bm{0}$ and $\bm{B0} = \bm{0}$, where $\bm{0}$ is the zero matrix.
+\end{theorem}
+\pagebreak
+
+
+\subsection{Transpose of a Matrix}
+The \textit{transpose} of matrix $\bm{A}$ can be expressed as $\bm{A}^T$. It is the matrix obtained by writing the columns of $\bm{A}$, in order, as rows. Consider the following, \\
+\[\begin{bmatrix}1 & 2 & 3\\ 4 & 5 & 6\end{bmatrix}^{T} = \begin{bmatrix}1 & 4 \\ 2 & 5 \\ 3 & 6\end{bmatrix} \text{ and } \begin{bmatrix}1 & -3 & -5\end{bmatrix}^{T} = \begin{bmatrix}1 \\ -3 \\ -5\end{bmatrix}\]
+In other words, if $\bm{A} = [a_{ij}]$ is an $m \times n$ matrix, then $\bm{A}^T = [b_{ij}]$ is the $n \times m$ matrix where $b_{ij} = a_{ij}$. \\
+\phantom \\ \\
+\begin{theorem}[Basic properties of the transpose operation]
+Let $\bm{A}$ and $\bm{B}$ be matrices and let $k$ be a scalar. Then, whenever the sum and product are defined:
+\begin{center}
+\begin{tabular}[t]{| c | c |}
+\hline
+& \\
+	$(\bm{A} + \bm{B})^T = \bm{A}^T + \bm{B}^T$ & $(k\bm{A})^T = k\bm{A}^T$ \\
+& \\
+\hline
+& \\
+	$(\bm{A}^T)^T = \bm{A}$ & $(\bm{AB})^T = \bm{B}^T\bm{A}^T$ \\
+& \\
+\hline
+\end{tabular}
+\end{center}
+\phantom \\ \\
+In the last cell -- row 2, column 2 -- we see that the transpose of a product is the product of the transposes, but in the reverse order.
+\end{theorem}
+
+
+\subsection{Square Matrices}
+A \textit{square matrix} is a matrix with the same number of rows as columns. An $n \times n$ square matrix is said to be of \textit{order} $n$ and is sometimes called an $n$-\textit{square matrix}.\\
+\phantom \\ \\
+Recall that not every two matrices can be added or multiplied. However, if we only consider square matrices of some given order $n$, then this inconvenience disappears. Specifically, the operations of addition, multiplication, sclaar multiplication, and transpose can be performed on any $n \times n$ matrices, and the result is again an $n \times n$ matrix. \\
+
+
+\subsection{Diagonal and Trace}
+Let $\bm{A} = [a_{ij}]$ be an $n$-square matrix. The \textit{diagonal} or \textit{main diagonal} of $\bm{A}$ consists of the elements with the same subscripts: \\
+	\[a_{11}, a_{22}, a_{33}, \dots, a_{nn}\]
+\phantom \\ \\
+The \textit{trace} of $\bm{A}$ can be expressed as $\tr{\bm{A}}$. It is the sum of the diagonal elements; $\tr{\bm{A}} = a_{11} + a_{22} + a_{33} + \dots + a_{nn}$. \\
+\begin{theorem}[Basic properties of the trace of a matrix]
+Suppose $\bm{A} = [a_{ij}]$ and $\bm{B} = [b_{ij}]$ are $n$-square matrices and $k$ is a scalar. \\
+\begin{center}
+\begin{tabular}[t]{| c | c |}
+\hline
+	$\tr{\bm{A} + \bm{B}} = \tr{\bm{A}} + \tr{\bm{B}}$ & $\tr{\bm{A}^T} = \tr{\bm{A}}$ \\
+\hline
+	$\tr{k\bm{A}} = k\tr{\bm{A}}$ & $\tr{\bm{AB}} = \tr{\bm{BA}}$ \\
+\hline
+\end{tabular}
+\end{center}
+Although $\bm{AB} \neq \bm{BA}$, the traces are equal.
+\end{theorem}
+
+
+\subsection{Identity Matrix, Scalar Matrices}
+The $n$-square \textit{identity} or \textit{unit matrix}, dentoed by $\bm{I}_n$, or simply $\bm{I}$, is the $n$-square matrix with $1$s on thee diagonal and $0$s everywhere. The identity matrix $\bm{I}$ is similar to the scalar $1$ in that, for any $n$-square matrix $\bm{A}$, $\bm{AI} = \bm{IA} = \bm{A}$. More generally, if $\bm{B}$ is an $m \times n$ matrix:
+\[\bm{BI_n} = \bm{I_mB} = \bm{B}\]
+\phantom \\ \\
+For any scalar $k$, the matrix $k\bm{I}$ that contains $k$s on the diagonal and $0$s everywhere else is called the \text{scalar matrix} corresponding to the scalar $k$. Multiplying a matrix $\bm{A}$ by the scalar matrix $k\bm{I}$ is equivalent to multiplying $\bm{A}$ by the scalar $k$; $(k\bm{I})\bm{A} = k(\bm{IA}) = k\bm{A}$. \\
+\phantom \\ \\
+The \textit{Kronecker delta} function $\delta_{ij}$ can also be used to define the identity matrix;
+\[\delta_{ij} = 
+\begin{cases}
+0 & \text{if } i \neq j \\
+1 & \text{if } i = j
+\end{cases}\]
+Therefore, the identity matrix, $\bm{I} = [\delta_{ij}]$.
+
+
+\subsection{Polynomials in Matrices}
+Let $\bm{A}$ be an $n$-square matrix over a field $K$. \textit{Powers} of $\bm{A}$:
+\[\bm{A}^2 = \bm{A}\bm{A}, \ \ \ \ \bm{A}^3 = \bm{A}^2\bm{A}, \ \ \ \ \dots, \ \ \ \ \bm{A}^{n+1} = \bm{A}^n\bm{A},
+\ \ \ \ \dots, \ \ \ \ \text{and} \ \ \ \ \bm{A}^0 = \bm{I}\]
+\phantom \\ \\
+Polynomials in the matrix $\bm{A}$ are also defined. For any polynomial $f(x) = a_0 + a_1x + a_2x^2 + \dots + a_nx^n$ where $a_i$ are scalars in $K$, $f(\bm{A})$ is defined to be the following matrix:
+\[f(\bm{A}) = a_0\bm{I} + a_1\bm{A} + a_2\bm{A}^2 + \dots + a_n\bm{A}^n\]
+If $f(\bm{A})$ is the zero matrix, then $\bm{A}$ is called a \textit{zero} or \textit{root} of $f(x)$. \\
+\pagebreak
+
+
+\subsection{Invertible (Non-singular) Matrices}
+A square matrix $\bm{A}$ is said to be \textit{invertible} or \textit{non-singular} if there exists a matrix $\bm{B}$ such that $\bm{AB} = \bm{BA}= \bm{I}$ where $\bm{I}$ is the identity matrix. If $\bm{AB_1} = \bm{B_1A} = \bm{I}$ and $\bm{AB_2} = \bm{B_2A} = \bm{I}$, then $\bm{B_1} = \bm{B_1I} = \bm{B_1(AB_2)} = \bm{(B_1A)B_2} = \bm{IB_2} = \bm{B_2}$. \\
+\phantom \\ \\
+We call such a matrix $\bm{B}$ the \textit{inverse} of $\bm{A}$. It can be expressed as $\bm{A}^{-1}$. Do note that the above relation is symmetric; if $\bm{B}$ is the inverse of $\bm{A}$, then $\bm{A}$ is the inverse of $\bm{B}$. \\
+\phantom \\ \\
+It is known that $\bm{AB} = \bm{I}$ \textit{iff} $\bm{BA} = \bm{I}$. Therefore it is sufficient to test only one product to determine whether or not two given matrices are inverses. \\
+\phantom \\ \\
+Now suppose $\bm{A}$ and $\bm{B}$ are invertible. It follows that $\bm{AB}$ is invertible and $(\bm{AB})^{-1} = \bm{B}^{-1}\bm{A}^{-1}$. More generally, if $\bm{A}_1, \bm{A}_2, \dots, \bm{A}_k$ are invertible, then their product is invertible, and 
+$(\bm{A}_1 \ \bm{A}_2 \ \dots \ \bm{A}_k)^{-1} = \bm{A}^{-1}_k \ \dots \ \bm{A}^{-1}_2 \ \bm{A}^{-1}_1$, the product of the inverses in the reverse order. \\
+\phantom \\ \\
+
+
+\subsection{Inverse of a $2 \times 2$ Matrix}
+Let $\bm{A}$ be an arbitrary $2 \times 2$ matrix; $\bm{A} = \begin{bmatrix}a & b \\ c & d \end{bmatrix}$. We want to derive a formula for $\bm{A}^{-1}$. In this case, we seek $2^2 = 4$ scalars -- $x_1, y_1, x_2, y_2$ -- such that:
+\[\begin{bmatrix}a & b \\ c & d \end{bmatrix} \begin{bmatrix}x_1 & x_2 \\ y_1 & y_2 \end{bmatrix} = \begin{bmatrix}1 & 0 \\ 0 & 1 \end{bmatrix} \text{ or } \begin{bmatrix}ax_1 + by_1 & ax_2 + by_2 \\ cx_1 + dy_1 & cx_2 + dy_2 \end{bmatrix} = \begin{bmatrix}1 & 0 \\ 0 & 1 \end{bmatrix}\] \\
+\phantom \\ \\
+Setting the four entries equal to the corresponding entries in the identity matrix yields four equations, which can be partitioned into $2 \times 2$ systems as follows:
+\[ax_1 + by_1 = 1, \ \ \ \ ax_2 + by_2 = 0\]
+\[cx_1 + dy_1 = 0, \ \ \ \ cx_2 + dy_2 = 1\]
+\phantom \\ \\
+Suppose we let $|\bm{A}| = ad - bc$ ($|\bm{A}|$ is the \textit{determinant} of $\bm{A}$). Assuming $|\bm{A}| \neq 0$ (if $|\bm{A}| = 0$, $\bm{A}$ is not invertible), we can solve uniquely for the above unknowns $x_1, y_1, x_2, y_2$ which obtains:
+\[x_1 = \frac{d}{|\bm{A}|}, \ \ \ \ y_1 = \frac{-c}{|\bm{A}|}, \ \ \ \ x_2 = \frac{-b}{|\bm{A}|}, \ \ \ \ y_2 = \frac{a}{|\bm{A}|}\]
+\phantom \\ \\
+Accordingly,
+\[\bm{A}^{-1} = \begin{bmatrix}a & b \\ c & d \end{bmatrix}^{-1} = \begin{bmatrix}d/|\bm{A}| & -b/|\bm{A}| \\ -c/|\bm{A}| & a/|\bm{A}| \end{bmatrix} = \frac{1}{|\bm{A}|}\begin{bmatrix}d & -b \\ -c & a \end{bmatrix}\] 
+\phantom \\ \\
+In other words, when $|\bm{A}| \neq 0$, the inverse of a $2 \times 2$ matrix $\bm{A}$; $\bm{A}^{-1}$ is obtained by:
+\begin{center}
+\begin{enumerate}
+	\item Interchange the two elements on the diagonal,
+	\item Take the negatives of the other two elements,
+	\item Multiply the reuslting matrix by $1/|\bm{A}|$ or divide each element by $|\bm{A}|$.
+\end{enumerate}
+\end{center}
+\phantom \\ \\
+To find the inverse of a matrix in general, it is finding the solution of a collection of $n \times n$ systems of linear equations for an arbitrary $n$-square matrix. \\
+
+
+\subsection{Special Types of Square Matrices}
+\subsubsection{Diagonal Matrices}
+As square matrix $\bm{D} = [d_{ij}]$ is \textit{diagonal} if its non-diagonal entries are all zero. It can be expressed as:
+\[\bm{D} = \diag{d_{11}, d_{22}, \dots, d_{nn}}\]
+where some or all the $d_{ii}$ may be zero.
+
+
+\subsubsection{Triangular Matrices}
+A square matrix is \textit{upper triangular} or simply \textit{triangular} if all entries below the main diagonal are equal to $0$; If $a_{ij} = 0$ for all $i > j$. \\
+\phantom \\ \\
+A \textit{lower triangular} matrix is a square matrix whose entries above the diagonal are all zero. \\
+\begin{theorem}
+Suppose $\bm{A} = [a_{ij}]$ and $\bm{B} = [b_{ij}]$ are $n \times n$ upper/lower triangular matrices.
+\begin{enumerate}
+	\item $\bm{A} + \bm{B}, k\bm{A}, \bm{AB}$ are triangular with respective diagonals. \\ $(a_{11} + b_{11}, \dots, a_{nn} + b_{nn})$, $(ka_{11}, \dots, ka_{nn})$, $(a_{11}b_{11}, \dots, a_{nn}b_{nn})$ \\
+	\item For any polynomial $f(x)$, the matrix $f(\bm{A})$ is triangular with diagonal $\left(f(a_{11}), f(a_{22}), \dots, f(a_{nn})\right)$ \\
+	\item $\bm{A}$ is invertible \textit{iff} each diagonal element $a_{ii} \neq 0$, and when $\bm{A}^{-1}$ exists it is also triangular. \\
+\end{enumerate}
+\end{theorem}
+\phantom \\ \\
+
+
+\subsubsection{Symmetric Matrices}
+A matrix $\bm{A}$ is \textit{symmetric} if $\bm{A}^T = \bm{A}$. Equivalently, $\bm{A} = [a_{ij}]$ is symmetric if \textit{symmetric elements} (mirror elements wrt. the diagonal) are equal; if each $a_{ij} = a_{ji}$. \\
+\phantom \\ \\
+A matrix $\bm{A}$ is \textit{skew-symmetric} if $\bm{A}^T = -\bm{A}$. Equivalently, $a_{ij} = -a_{ji}$. Clearly the diagonal elements of such am atrix must be zero, since $a_{ii} = -a_{ii} \Rightarrow a_{ii} = 0$. \\
+\phantom \\ \\
+
+
+\subsubsection{Orthogonal Matrices}
+A real matrix $\bm{A}$ is \textit{orthogonal} if $\bm{A}^T = \bm{A}^{-1}$; $\bm{A}\bm{A}^T = \bm{A}^T\bm{A} = \bm{I}$. Therefore, $\bm{A}$ must necessarily be square and invertible. \\
+\phantom \\ \\
+Suppose $\bm{A}$ is a real orthogonal $3 \times 3$ matrix with rows:
+\[u_1 = (a_1, a_2, a_3), \ \ \ \ u_2 = (b_1, b_2, b_3), \ \ \ \ u_3 = (c_1, c_2, c_3).\]
+\phantom \\ \\
+Since $\bm{A}$ is orthogonal, we must have $\bm{A}\bm{A}^T = \bm{I}$. \\
+\[\bm{A}\bm{A}^T = \begin{bmatrix}a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3\end{bmatrix}\begin{bmatrix}a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2 \\ a_3 & b_3 & c_3\end{bmatrix}
+= \begin{bmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{bmatrix} = \bm{I}\] \\
+\phantom \\ \\
+Multiplying $\bm{A}$ by $\bm{A}^T$ and setting each entry equal to the corresponding entry in $\bm{I}$ yields a $3 \times 3$ system of equations.
+\[a_1^2 + a_2^2 + a_3^3 = 1, \tab a_1b_1 + a_2b_2 + a_3b_3 = 0, \tab a_1c_1 + a_2c_2 + a_3c_3 = 0\]
+\[b_1a_1 + b_2a_2 + b_3a_3 = 0, \tab b_1^2 + b_2^2 + b_3^2 = 1, \tab b_1c_1 + b_2c_2 + b_3c_3 = 0\]
+\[c_1a_1 + c_2a_2 + c_3a_3 = 0, \tab c_1b_1 + c_2b_2 + c_3b_3 = 0, \tab c_1^2 + c_2^2 + c_3^2 = 1\]
+\phantom \\ \\
+This shows that $u_1 \cdot u_1 = 1, u_2 \cdot u_2 = 1, u_3 \cdot u_3 = 1,$ and $u_i \cdot u_j = 0$ for all $i \neq j$. It follows that the rows $u_1, u_2, u_3$ are unit vectors and are orthogonal to each other. \\
+\phantom \\ \\
+In general, vectors $\bm{u}_1, \bm{u}_2, \dots,  \bm{u}_m$ in $\mathbb{R}^n$ are said to form an \textit{orthonormal} set of vectors if the vectors are unit vectors and are orthogonal to each other:
+\[u_i \cdot u_j = \begin{cases}0 & \text{if } i \neq j \\ 1 & \text{if } i = j\end{cases}\] \\
+\phantom \\ \\
+You can see that $u_i \cdot u_j = \delta_{ij}$ where $\delta_{ij}$ is the Kronecker delta function. \\
+\phantom \\ \\
+We have shown that the condition $\bm{A}\bm{A}^T = \bm{I}$ implies that the rows of $\bm{A}$ form an orthonormal set of vectors. The condition $\bm{A}^T\bm{A} = \bm{I}$ similary implies that the columns of $\bm{A}$ also form an orthonormal set of vectors. Moreover, since each step is reversible, the converse is true. The above results for $3 \times 3$ matrices is true in general. \\
+\begin{theorem}
+Let $\bm{A}$ be a real matrix. Then the following are equivalent:
+\begin{enumerate}
+	\item $\bm{A}$ is orthogonal,
+	\item The rows of $\bm{A}$ form an orthonormal set,
+	\item The columns of $\bm{A}$ form an orthonormal set.
+\end{enumerate}
+\end{theorem}
+\phantom \\ \\
+
+
+\subsubsection{Normal Vectors}
+A real matrix $\bm{A}$ is \textit{norma} if it \textit{commutes} with its transpose $\bm{A}^T$; $\bm{A}\bm{A}^T = \bm{A}^T\bm{A}$. If $\bm{A}$ is symmetric, orthogonal, or skew-symmetric, then $\bm{A}$ is normal. \\
+\phantom \\ \\
+
+
+\subsection{Block Matrices}
+Using a system of horizontal and vertical lines, we can partition a matrix $\bm{A}$ into sub-matrices called \textit{blocks/cells} of $\bm{A}$. Any given matrix may be divided into blocks in different ways.  \\
+\[
+  \left[\begin{array}{@{}cc|cc|c@{}}
+    1 & -2 & 0 & 1 & 3 \\
+    2 & 3 & 5 & 7 & -2 \\
+\hline
+    3 & 1 & 4 & 5 & 9 \\
+    4 & 6 & -3 & 1 & 8 \\
+  \end{array}\right]
+\tab
+  \left[\begin{array}{@{}cc|ccc@{}}
+    1 & -2 & 0 & 1 & 3 \\
+\hline
+    2 & 3 & 5 & 7 & -2 \\
+    3 & 1 & 4 & 5 & 9 \\
+\hline
+    4 & 6 & -3 & 1 & 8 \\
+  \end{array}\right]
+\tab 
+  \left[\begin{array}{@{}ccc|cc@{}}
+    1 & -2 & 0 & 1 & 3 \\
+    2 & 3 & 5 & 7 & -2 \\
+\hline
+    3 & 1 & 4 & 5 & 9 \\
+    4 & 6 & -3 & 1 & 8 \\
+  \end{array}\right]
+\]
+\phantom \\ \\
+The convenience of block matrices; $\bm{A}$ and $\bm{B}$ into blocks is that the result of operations on $\bm{A}$ and $\bm{B}$ can be obtained by carrying out the computation with the blocks, just as if they were the actual elements of the matrices. \\
+\phantom \\ \\
+Suppose that $\bm{A} = [\bm{A}_{ij}]$ and $\bm{B} = [\bm{B}_{ij}]$ are block matrices with the same number of row and column blocks. Suppose that the corresponding blocks have the same size. It follows that adding the corresponding blocks of $\bm{A}$ and $\bm{B}$ also adds the corresponding elements of $\bm{A}$ and $\bm{B}$ and multiplying each block of $\bm{A}$ by a scalar $k$ multiplies each element of $\bm{A}$ by $k$. \\
+\[\bm{A} + \bm{B} = \begin{bmatrix}
+\bm{A}_{11} + \bm{B}_{11} & \bm{A}_{12} + \bm{B}_{12} & \dots & \bm{A}_{1n} + \bm{B}_{1n} \\
+\bm{A}_{21} + \bm{B}_{21} & \bm{A}_{22} + \bm{B}_{22} & \dots & \bm{A}_{2n} + \bm{B}_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\bm{A}_{m1} + \bm{B}_{m1} & \bm{A}_{m2} + \bm{B}_{m2} & \dots & \bm{A}_{mn} + \bm{B}_{mn} \\
+\end{bmatrix}\]
+\[k\bm{A} = \begin{bmatrix}
+k\bm{A}_{11} & k\bm{A}_{12} & \dots & k\bm{A}_{1n} \\
+k\bm{A}_{21} & k\bm{A}_{22} & \dots & k\bm{A}_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+k\bm{A}_{m1} & k\bm{A}_{m2} & \dots & k\bm{A}_{mn} \\
+\end{bmatrix}\]
+\phantom \\ \\
+The case of matrix multiplication is less obvious. Suppose $\bm{U} = [\bm{U}_{ik}]$ and $\bm{V} = [\bm{V}_{kj}]$ are block matrices such that the number of clumns of each block $\bm{U}_{ik}$ is equal to the number of rows of each block $\bm{V}_{kj}$; the condition for matrix multiplication has been satisfied. \\
+\[\bm{UV} = \begin{bmatrix}
+\bm{W}_{11} & \bm{W}_{12} & \dots & \bm{W}_{1n} \\
+\bm{W}_{21} & \bm{W}_{22} & \dots & \bm{W}_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\bm{W}_{m1} & \bm{W}_{m2} & \dots & \bm{W}_{mn} \\
+\end{bmatrix}\] 
+where $\bm{W}_{ij} = \bm{U}_{i1}\bm{V}_{1j} + \bm{U}_{i2}\bm{V}_{2j} + \dots + \bm{U}_{ip}\bm{V}_{pj}$.
+
+
+\subsection{Square Block Matrices}
+\begin{theorem}
+Let $\bm{M}$ be a block matrix. For $\bm{M}$ to be a \textit{square block matrix}:
+\begin{enumerate}
+	\item $\bm{M}$ is square matrix,
+	\item The blocks form a square matrix,
+	\item The diagonal blocks are also square matrices.
+\end{enumerate}
+\end{theorem}
+\phantom \\ \\
+The last two conditions will occur \textit{iff} there are the same number of horizontal and vertical lines and they are placed symmetrically. \\
+\[\bm{A} = 
+\left[\begin{array}{@{}cc|cc|c@{}}
+    	1 & 2 & 3 & 4 & 5 \\
+    	1 & 1 & 1 & 1 & 1 \\
+\hline
+    	3 & 1 & 4 & 5 & 9 \\
+\hline
+	4 & 4 & 4 & 4 & 4 \\
+	3 & 5 & 3 & 5 & 3 \\
+  \end{array}\right]
+\text{ and }
+\bm{B} =
+\left[\begin{array}{@{}cc|cc|c@{}}
+    	1 & 2 & 3 & 4 & 5 \\
+    	1 & 1 & 1 & 1 & 1 \\
+\hline
+    	3 & 1 & 4 & 5 & 9 \\
+	4 & 4 & 4 & 4 & 4 \\
+\hline
+	3 & 5 & 3 & 5 & 3 \\
+  \end{array}\right]\] 
+\phantom \\ \\
+The block matrix $\bm{A}$ is not a square block matrix, since the second and third diagonal blocks are not square. On the other hand, the block matrix $\bm{B}$ is a square block matrix. \\
+
+
+\subsection{Block Diagonal Matrices}
+Let $\bm{M} = [\bm{A}_{ij}]$ be a square block matrix such that the non-diagonal blocks are all zero matrices; $\bm{A}_{ij} = 0$ when $i \neq j$. Then $\bm{M}$ is called a \textit{block diagonal matrix}. It can be expressed as:
+\[\bm{M} = \diag{\bm{A}_{11}, \bm{A}_{22}, \dots, \bm{A}_{rr}} \text{ or } \bm{M} = \bm{A}_{11} \oplus \bm{A}_{22} \oplus \dots \oplus \bm{A}_{rr}\]
+\phantom \\ \\
+The importance of block diagonal matrices is that the algebra of the block matrix is frequently reduced to the algebra of the individual blocks. Specifically, suppose $f(x)$ is a polynomial and $\bm{M}$ is the above block diagonal matrix. It follows that $f(\bm{M})$ is a block diagonal matrix and 
+\[f(\bm{M}) = \diag{f(\bm{A}_{11}), f(\bm{A}_{22}), \dots, f(\bm{A}_{rr})}\]
+\phantom \\ \\
+Moreover, $\bm{M}$ is invertible \textit{iff} each $\bm{A}_{ii}$ is invertible, and in this case, $\bm{M}^{-1}$ is a block diagonal matrix:
+\[\bm{M}^{-1} = \diag{\bm{A}_{11}^{-1}, \bm{A}_{22}^{-1}, \dots, \bm{A}_{rr}^{-1}}\]
+
+
 \section{Systems of Linear Equations}
+
+
+
 \section{Vector Spaces}
+
+
+
 \section{Inner Product Spaces; Orthogonality}
+
+
+
 \section{Determinants}
+
+
+
 \section{Diagonalization; Eigenvalues and Eigenvectors}
+
+
+
 \section{Linear Mappings}
+
+
+
 \section{Canonical Forms}
+
+
 
 \end{document}
